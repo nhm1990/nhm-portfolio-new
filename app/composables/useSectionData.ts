@@ -15,7 +15,7 @@ export function useSectionData<K extends keyof PortfolioContent>(section: K) {
   const { locale } = useI18n({ useScope: 'global' })
 
   const { data } = useAsyncData(
-    () => `portfolio-${locale.value}`,
+    `portfolio-${section}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path('/portfolio').first()
@@ -25,7 +25,8 @@ export function useSectionData<K extends keyof PortfolioContent>(section: K) {
       }
 
       return result
-    }
+    },
+    { watch: [locale] }
   )
 
   const sectionData = computed(() => {

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+definePageMeta({
+  key: 'index',
+})
+</script>
+
 <template>
   <div>
     <HeroSection />
