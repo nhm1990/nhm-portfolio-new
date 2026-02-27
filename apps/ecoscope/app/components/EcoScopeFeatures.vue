@@ -105,7 +105,7 @@ const features: Feature[] = [
         :viewport="{ once: true }"
       >
         <NuxtLink
-          to="/ecoscope/explorer"
+          to="/explorer"
           class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-xl hover:from-teal-400 hover:to-emerald-400 transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-105 duration-300 text-lg"
         >
           <Icon name="mdi:table-large" class="text-xl" />

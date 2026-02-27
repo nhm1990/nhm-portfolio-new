@@ -1,0 +1,13 @@
+(node:37092) ExperimentalWarning: CommonJS module C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\tailwindcss@3.4.19_yaml@2.8.2\node_modules\tailwindcss\lib\lib\load-config.js is loading ES Module C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\apps\ecoscope\node_modules\.cache\nuxt\.nuxt\tailwind\postcss.mjs using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[43m[30m WARN [39m[49m [33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+
+(node:37092) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping "./" in the "exports" field module resolution of the package at C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\@nuxt+icon@2.2.1_magicast@0_d302252eeac58bc416632d751dcc8952\node_modules\@iconify\utils\package.json imported from C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\@nuxt+icon@2.2.1_magicast@0_d302252eeac58bc416632d751dcc8952\node_modules\@nuxt\icon\dist\runtime\server\api.js. Mapping specifiers ending in "/" is no longer supported.
+(node:37092) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping "./" in the "exports" field module resolution of the package at C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\node_modules\@iconify\utils\package.json imported from C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\nuxt@4.3.1_@parcel+watcher@_6a9d616e8d364a17023f270306b062a5\node_modules\nuxt\node_modules\. Mapping specifiers ending in "/" is no longer supported.
+(node:37092) [DEP0155] DeprecationWarning: Use of deprecated trailing slash pattern mapping "./" in the "exports" field module resolution of the package at C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\@nuxt+nitro-server@4.3.1_db_ac13f260e8196f2df297fb42cb9b65c8\node_modules\@vue\shared\package.json imported from C:\Users\nicolas.hormesch\Projects\nhm1990\ecoscope\node_modules\.pnpm\@nuxt+nitro-server@4.3.1_db_ac13f260e8196f2df297fb42cb9b65c8\node_modules\@nuxt\nitro-server\dist\runtime\templates\error-500.mjs. Mapping specifiers ending in "/" is no longer supported.

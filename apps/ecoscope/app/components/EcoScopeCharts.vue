@@ -2,18 +2,15 @@
 import { Motion } from 'motion-v'
 import { AgCharts } from 'ag-charts-vue3'
 
-const { generateHourlyData, generateCityComparison, generateCityData, getAqiDistribution } =
-  useEnvData()
+const { hourlyData, cityData, isLoading, getAqiDistribution, getCityComparison } = useEnvData()
 
-const hourlyData = generateHourlyData()
-const cityComparison = generateCityComparison()
-const allCityData = generateCityData()
-const aqiDistribution = getAqiDistribution(allCityData)
+const cityComparison = computed(() => getCityComparison())
+const aqiDistribution = computed(() => getAqiDistribution(cityData.value))
 
-// AG Charts v13: no autoSize (fills container by default), no background.fill shorthand
+// AG Charts v13: chart options are computed so they react to live API data
 // Chart 1: Pollutant Trends (Line)
-const trendOptions = ref({
-  data: hourlyData,
+const trendOptions = computed(() => ({
+  data: hourlyData.value,
   title: { text: 'Air Quality Trends (24h)' },
   subtitle: { text: 'Berlin, Germany — Hourly Measurements' },
   series: [
@@ -50,11 +47,11 @@ const trendOptions = ref({
     { type: 'number' as const, position: 'left' as const, title: { text: 'µg/m³' } },
   ],
   legend: { enabled: true, position: 'bottom' as const },
-})
+}))
 
 // Chart 2: City Comparison (Bar)
-const comparisonOptions = ref({
-  data: cityComparison,
+const comparisonOptions = computed(() => ({
+  data: cityComparison.value,
   title: { text: 'Air Quality Index by City' },
   subtitle: { text: 'Selected Cities — Lower is Better' },
   series: [
@@ -78,11 +75,11 @@ const comparisonOptions = ref({
     { type: 'number' as const, position: 'left' as const },
   ],
   legend: { enabled: true, position: 'bottom' as const },
-})
+}))
 
 // Chart 3: AQI Distribution (Donut/Pie)
-const distributionOptions = ref({
-  data: aqiDistribution,
+const distributionOptions = computed(() => ({
+  data: aqiDistribution.value,
   title: { text: 'Global AQI Distribution' },
   subtitle: { text: 'Across 25 Monitored Cities' },
   series: [
@@ -96,11 +93,11 @@ const distributionOptions = ref({
     },
   ],
   legend: { enabled: true, position: 'bottom' as const },
-})
+}))
 
 // Chart 4: AQI Trend (Area)
-const aqiTrendOptions = ref({
-  data: hourlyData,
+const aqiTrendOptions = computed(() => ({
+  data: hourlyData.value,
   title: { text: 'AQI Trend (24h)' },
   subtitle: { text: 'Berlin, Germany — Air Quality Index Over Time' },
   series: [
@@ -121,7 +118,7 @@ const aqiTrendOptions = ref({
     { type: 'number' as const, position: 'left' as const, title: { text: 'AQI' } },
   ],
   legend: { enabled: false },
-})
+}))
 
 const charts = computed(() => [
   { options: trendOptions.value, label: 'Pollutant Trends' },
@@ -163,7 +160,13 @@ const charts = computed(() => [
           :viewport="{ once: true }"
         >
           <ClientOnly>
-            <AgCharts :options="chart.options" style="height: 350px; width: 100%" />
+            <div v-if="isLoading" class="h-[350px] bg-slate-100 rounded-xl animate-pulse flex items-center justify-center">
+              <div class="text-center">
+                <Icon name="mdi:chart-line" class="text-3xl text-slate-300 mb-2" />
+                <p class="text-sm text-slate-400">Fetching live data…</p>
+              </div>
+            </div>
+            <AgCharts v-else :options="chart.options" style="height: 350px; width: 100%" />
             <template #fallback>
               <div
                 class="h-[350px] bg-slate-100 rounded-xl animate-pulse flex items-center justify-center"

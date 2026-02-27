@@ -2,11 +2,14 @@
 import { Motion } from 'motion-v'
 
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
 const isMobileMenuOpen = ref(false)
 
+const portfolioUrl = computed(() => runtimeConfig.public.portfolioUrl || 'https://www.nicholashormesch.dev')
+
 const navLinks = [
-  { name: 'Dashboard', path: '/ecoscope', icon: 'mdi:view-dashboard-outline' },
-  { name: 'Data Explorer', path: '/ecoscope/explorer', icon: 'mdi:table-large' },
+  { name: 'Dashboard', path: '/', icon: 'mdi:view-dashboard-outline' },
+  { name: 'Data Explorer', path: '/explorer', icon: 'mdi:table-large' },
 ]
 
 const isActive = (path: string): boolean => route.path === path
@@ -23,7 +26,7 @@ const isActive = (path: string): boolean => route.path === path
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
-        <NuxtLink to="/ecoscope" class="flex items-center gap-3 group">
+        <NuxtLink to="/" class="flex items-center gap-3 group">
           <div
             class="w-9 h-9 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center shadow-lg shadow-teal-500/20 group-hover:shadow-teal-500/40 transition-shadow duration-300"
           >
@@ -54,13 +57,13 @@ const isActive = (path: string): boolean => route.path === path
 
         <!-- Back to Portfolio -->
         <div class="hidden md:flex items-center">
-          <NuxtLink
-            to="/#portfolio"
+          <a
+            :href="`${portfolioUrl}/#portfolio`"
             class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white border border-slate-700 hover:border-slate-500 transition-all duration-200"
           >
             <Icon name="mdi:arrow-left" class="text-base" />
             Portfolio
-          </NuxtLink>
+          </a>
         </div>
 
         <!-- Mobile Menu Toggle -->
@@ -102,14 +105,14 @@ const isActive = (path: string): boolean => route.path === path
             <Icon :name="link.icon" class="text-lg" />
             {{ link.name }}
           </NuxtLink>
-          <NuxtLink
-            to="/#portfolio"
+          <a
+            :href="`${portfolioUrl}/#portfolio`"
             class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white transition-colors"
             @click="isMobileMenuOpen = false"
           >
             <Icon name="mdi:arrow-left" class="text-lg" />
             Back to Portfolio
-          </NuxtLink>
+          </a>
         </div>
       </div>
     </Transition>

@@ -48,14 +48,6 @@
               AG Charts
             </a>
           </span>
-          <span class="text-slate-700">•</span>
-          <NuxtLink
-            to="/#portfolio"
-            class="text-teal-500 hover:text-teal-400 transition-colors flex items-center gap-1"
-          >
-            <Icon name="mdi:arrow-left" class="text-xs" />
-            Portfolio
-          </NuxtLink>
         </div>
       </div>
 
