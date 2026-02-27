@@ -26,6 +26,7 @@ const isReversed = computed(() => props.index % 2 !== 0)
       :highlights="project.highlights"
       :technologies="project.technologies"
       :is-reversed="isReversed"
+      :link="project.link"
     />
   </div>
 </template>

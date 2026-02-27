@@ -87,6 +87,25 @@ portfolio:
         - "AI-powered experiment suggestions"
         - "Digital lab journal"
         - "Protocol automation"
+    - id: 4
+      title: "EcoScope — Environmental Intelligence"
+      client: "Personal Project"
+      category: "Data Visualization & Analytics"
+      description: "Interactive environmental monitoring platform featuring real-time air quality data from 25+ global cities, advanced AG Charts visualizations, and a powerful AG Grid data explorer with inline editing, validation, and CSV export."
+      image: "/images/portfolio/portfolio_ecoscope.png"
+      link: "/ecoscope"
+      technologies:
+        - "Vue 3"
+        - "Nuxt"
+        - "TypeScript"
+        - "AG Grid"
+        - "AG Charts"
+        - "Open-Meteo API"
+        - "Tailwind CSS"
+      highlights:
+        - "Real-time air quality monitoring"
+        - "Interactive data grid with editing"
+        - "25+ city comparison charts"
 contact:
   title: "Let's Work Together"
   subtitle: "Have a project in mind? I'd love to hear from you."

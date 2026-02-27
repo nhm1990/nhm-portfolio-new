@@ -9,6 +9,7 @@ defineProps<{
   highlights: string[]
   technologies: string[]
   isReversed: boolean
+  link?: string
 }>()
 </script>
 
@@ -59,6 +60,23 @@ defineProps<{
         </li>
       </ul>
     </div>
+
+    <!-- Live Demo Link -->
+    <NuxtLink
+      v-if="link"
+      :to="link"
+      class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sage-500 to-mint-500 text-white font-semibold rounded-xl hover:from-sage-400 hover:to-mint-400 transition-all shadow-lg hover:shadow-xl hover:scale-105 duration-300 text-sm"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+        />
+      </svg>
+      View Live Demo
+    </NuxtLink>
 
     <!-- Technologies -->
     <div class="space-y-3">

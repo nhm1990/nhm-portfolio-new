@@ -12,6 +12,7 @@ export interface Project {
   image: string
   technologies: string[]
   highlights: string[]
+  link?: string
 }
 
 export interface PortfolioContent {

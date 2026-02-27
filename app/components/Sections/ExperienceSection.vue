@@ -15,23 +15,40 @@ const openProjectDetails = (project: any) => {
   dialogVisible.value = true
 }
 
+const parseStartDate = (period: string): Date => {
+  const match = period.match(/(\d{2})\/(\d{4})/)
+  const month = match?.[1]
+  const year = match?.[2]
+  if (month && year) {
+    return new Date(parseInt(year), parseInt(month) - 1)
+  }
+  return new Date()
+}
+
 const timelineEvents = computed(() => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data = experienceData.value as any
-
   if (!data?.projects) return []
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return data.projects.map((project: any) => ({
-    status: project.period.includes('Present') ? 'active' : 'completed',
-    date: project.period,
-    company: project.company,
-    role: project.role,
-    industry: project.industry,
-    description: project.shortDescription,
-    technologies: project.technologies,
-    projectData: project,
-  }))
+  return (
+    [...data.projects]
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .sort(
+        (a: any, b: any) => parseStartDate(a.period).getTime() - parseStartDate(b.period).getTime()
+      )
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((project: any) => ({
+        status: project.period.includes('Present') ? 'active' : 'completed',
+        date: project.period,
+        company: project.company,
+        role: project.role,
+        industry: project.industry,
+        description: project.shortDescription,
+        technologies: project.technologies,
+        projectData: project,
+        startYear: project.period.match(/\d{4}/)?.[0] || '',
+      }))
+  )
 })
 
 const getIndustryColor = (industry: string) => {
@@ -43,6 +60,43 @@ const getIndustryColor = (industry: string) => {
   }
   return colors[industry] || '#5a8a5a'
 }
+
+// Horizontal scroll controls
+const timelineContainer = ref<HTMLElement | null>(null)
+const canScrollLeft = ref(false)
+const canScrollRight = ref(true)
+
+const scrollTimeline = (direction: 'left' | 'right') => {
+  if (timelineContainer.value) {
+    timelineContainer.value.scrollBy({
+      left: direction === 'right' ? 350 : -350,
+      behavior: 'smooth',
+    })
+  }
+}
+
+const updateScrollButtons = () => {
+  if (timelineContainer.value) {
+    const { scrollLeft, scrollWidth, clientWidth } = timelineContainer.value
+    canScrollLeft.value = scrollLeft > 10
+    canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 10
+  }
+}
+
+onMounted(() => {
+  nextTick(() => {
+    if (timelineContainer.value) {
+      timelineContainer.value.addEventListener('scroll', updateScrollButtons, { passive: true })
+      updateScrollButtons()
+    }
+  })
+})
+
+onUnmounted(() => {
+  if (timelineContainer.value) {
+    timelineContainer.value.removeEventListener('scroll', updateScrollButtons)
+  }
+})
 </script>
 
 <template>
@@ -72,79 +126,143 @@ const getIndustryColor = (industry: string) => {
         <p class="text-xl text-charcoal-700">Recent Projects & Achievements</p>
       </div>
 
-      <!-- Timeline -->
+      <!-- Horizontal Timeline -->
       <div
         v-if="experienceData"
         v-motion
         :initial="{ opacity: 0 }"
         :visible="{ opacity: 1, transition: { duration: 600, delay: 200 } }"
+        class="relative"
       >
-        <Timeline :value="timelineEvents" align="alternate" class="customized-timeline">
-          <template #marker="slotProps">
-            <span
-              class="flex w-8 h-8 items-center justify-center text-white rounded-full z-10 shadow-md"
-              :style="{ backgroundColor: getIndustryColor(slotProps.item.industry) }"
+        <!-- Left scroll fade + button -->
+        <Transition name="fade">
+          <div v-show="canScrollLeft" class="absolute left-0 top-0 bottom-0 z-10 flex items-center">
+            <div
+              class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-sage-50 to-transparent pointer-events-none"
+            />
+            <button
+              class="relative z-20 ml-1 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-sage-200 hover:bg-white hover:shadow-xl transition-all duration-200"
+              @click="scrollTimeline('left')"
             >
-              <Icon
-                :name="slotProps.item.status === 'active' ? 'mdi:briefcase' : 'mdi:check-circle'"
-                class="text-lg"
-              />
-            </span>
-          </template>
+              <Icon name="mdi:chevron-left" class="text-xl text-charcoal-700" />
+            </button>
+          </div>
+        </Transition>
 
-          <template #content="slotProps">
-            <Card class="mt-4 shadow-lg hover:shadow-xl transition-all duration-300">
-              <template #title>
-                <div class="flex items-start justify-between gap-4">
-                  <div class="flex-1">
-                    <h3 class="text-xl font-bold text-charcoal-900 mb-1">
-                      {{ slotProps.item.company }}
-                    </h3>
-                    <p class="text-sm font-semibold text-sage-600">{{ slotProps.item.role }}</p>
-                  </div>
-                  <Chip
-                    :label="slotProps.item.industry"
-                    :style="{
-                      backgroundColor: getIndustryColor(slotProps.item.industry),
-                      color: 'white',
-                    }"
-                    class="!font-semibold !text-xs"
-                  />
-                </div>
-              </template>
-
-              <template #subtitle>
-                <div class="flex items-center gap-1 text-xs text-gray-500">
-                  <Icon name="mdi:calendar" class="text-sm" />
+        <!-- Scrollable Timeline Container -->
+        <div ref="timelineContainer" class="overflow-x-auto timeline-scroll-container px-6">
+          <Timeline
+            :value="timelineEvents"
+            layout="horizontal"
+            align="bottom"
+            class="horizontal-experience-timeline"
+          >
+            <template #opposite="slotProps">
+              <div class="text-center whitespace-nowrap pb-2">
+                <span
+                  class="inline-block px-3 py-1 text-xs font-bold rounded-full text-white"
+                  :style="{ backgroundColor: getIndustryColor(slotProps.item.industry) }"
+                >
+                  {{ slotProps.item.startYear }}
+                </span>
+                <div class="text-[11px] text-charcoal-500 mt-1 font-medium">
                   {{ slotProps.item.date }}
                 </div>
-              </template>
+              </div>
+            </template>
 
-              <template #content>
-                <p class="text-gray-800 mb-4 text-sm">{{ slotProps.item.description }}</p>
+            <template #marker="slotProps">
+              <span
+                class="flex w-10 h-10 items-center justify-center text-white rounded-full z-10 shadow-lg transition-transform duration-200 hover:scale-110"
+                :style="{ backgroundColor: getIndustryColor(slotProps.item.industry) }"
+                :class="{
+                  'ring-3 ring-moss-300 ring-offset-2': slotProps.item.status === 'active',
+                }"
+              >
+                <Icon
+                  :name="slotProps.item.status === 'active' ? 'mdi:briefcase' : 'mdi:check-circle'"
+                  class="text-lg"
+                />
+              </span>
+            </template>
 
-                <!-- Technologies -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <Chip
-                    v-for="tech in slotProps.item.technologies"
-                    :key="tech"
-                    :label="tech"
-                    class="!bg-sage-100 !text-sage-700 !text-xs !px-3 !py-1 border border-sage-200"
-                  />
+            <template #content="slotProps">
+              <div
+                class="w-72 mt-4 p-4 rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-sage-100 hover:border-sage-300 hover:-translate-y-1 group"
+                @click="openProjectDetails(slotProps.item.projectData)"
+              >
+                <!-- Company + Industry -->
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <h3 class="text-base font-bold text-charcoal-900 leading-tight">
+                    {{ slotProps.item.company }}
+                  </h3>
+                  <span
+                    class="shrink-0 px-2 py-0.5 text-[10px] font-semibold rounded-full text-white whitespace-nowrap"
+                    :style="{ backgroundColor: getIndustryColor(slotProps.item.industry) }"
+                  >
+                    {{ slotProps.item.industry }}
+                  </span>
                 </div>
 
-                <Button
-                  label="View Details"
-                  icon="mdi:information"
-                  severity="secondary"
-                  text
-                  class="!text-sage-600 hover:!bg-sage-100 !mt-2"
-                  @click="openProjectDetails(slotProps.item.projectData)"
-                />
-              </template>
-            </Card>
-          </template>
-        </Timeline>
+                <!-- Role -->
+                <p class="text-xs font-semibold text-sage-600 mb-2">
+                  {{ slotProps.item.role }}
+                </p>
+
+                <!-- Description -->
+                <p class="text-xs text-charcoal-700 mb-3 line-clamp-2">
+                  {{ slotProps.item.description }}
+                </p>
+
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-1 mb-3">
+                  <span
+                    v-for="tech in slotProps.item.technologies?.slice(0, 4)"
+                    :key="tech"
+                    class="px-2 py-0.5 text-[10px] bg-sage-100 text-sage-700 rounded-full border border-sage-200"
+                  >
+                    {{ tech }}
+                  </span>
+                  <span
+                    v-if="slotProps.item.technologies?.length > 4"
+                    class="px-2 py-0.5 text-[10px] text-sage-500 font-medium"
+                  >
+                    +{{ slotProps.item.technologies.length - 4 }}
+                  </span>
+                </div>
+
+                <!-- View Details -->
+                <div
+                  class="flex items-center gap-1 text-xs text-sage-600 font-medium group-hover:text-moss-600 transition-colors"
+                >
+                  <Icon
+                    name="mdi:arrow-right"
+                    class="text-sm transition-transform group-hover:translate-x-1"
+                  />
+                  View Details
+                </div>
+              </div>
+            </template>
+          </Timeline>
+        </div>
+
+        <!-- Right scroll fade + button -->
+        <Transition name="fade">
+          <div
+            v-show="canScrollRight"
+            class="absolute right-0 top-0 bottom-0 z-10 flex items-center"
+          >
+            <div
+              class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-sage-50 to-transparent pointer-events-none"
+            />
+            <button
+              class="relative z-20 mr-1 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-sage-200 hover:bg-white hover:shadow-xl transition-all duration-200"
+              @click="scrollTimeline('right')"
+            >
+              <Icon name="mdi:chevron-right" class="text-xl text-charcoal-700" />
+            </button>
+          </div>
+        </Transition>
       </div>
 
       <!-- Project Details Dialog -->
@@ -251,13 +369,42 @@ const getIndustryColor = (industry: string) => {
 </template>
 
 <style scoped>
-@media screen and (max-width: 960px) {
-  .customized-timeline :deep(.p-timeline-event:nth-child(even)) {
-    flex-direction: row !important;
-  }
+/* Horizontal timeline: ensure each event has enough width */
+.horizontal-experience-timeline :deep(.p-timeline-event) {
+  min-width: 300px;
+}
 
-  .customized-timeline :deep(.p-timeline-event:nth-child(even) .p-timeline-event-content) {
-    text-align: left !important;
-  }
+/* Custom scrollbar */
+.timeline-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(93, 122, 82, 0.3) transparent;
+}
+
+.timeline-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.timeline-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(93, 122, 82, 0.3);
+  border-radius: 3px;
+}
+
+.timeline-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(93, 122, 82, 0.5);
+}
+
+/* Fade transition for scroll buttons */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

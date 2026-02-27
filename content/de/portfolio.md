@@ -85,6 +85,25 @@ portfolio:
         - "KI-gestützte Experiment-Vorschläge"
         - "Digitales Laborjournal"
         - "Protokoll-Automatisierung"
+    - id: 4
+      title: "EcoScope — Umwelt-Intelligence"
+      client: "Persönliches Projekt"
+      category: "Datenvisualisierung & Analytik"
+      description: "Interaktive Umweltüberwachungsplattform mit Echtzeit-Luftqualitätsdaten aus 25+ globalen Städten, fortschrittlichen AG Charts Visualisierungen und einem leistungsstarken AG Grid Daten-Explorer mit Inline-Bearbeitung, Validierung und CSV-Export."
+      image: "/images/portfolio/portfolio_ecoscope.png"
+      link: "/ecoscope"
+      technologies:
+        - "Vue 3"
+        - "Nuxt"
+        - "TypeScript"
+        - "AG Grid"
+        - "AG Charts"
+        - "Open-Meteo API"
+        - "Tailwind CSS"
+      highlights:
+        - "Echtzeit-Luftqualitätsüberwachung"
+        - "Interaktives Datengrid mit Bearbeitung"
+        - "25+ Städtevergleichs-Charts"
 contact:
   title: "Lassen Sie uns zusammenarbeiten"
   subtitle: "Haben Sie ein Projekt im Kopf? Ich würde gerne von Ihnen hören."
