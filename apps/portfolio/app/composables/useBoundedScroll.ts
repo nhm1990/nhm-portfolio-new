@@ -6,8 +6,6 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
  * Tracks bounded scroll progress based on scroll deltas, not absolute scroll position.
  * When the user scrolls **down**, progress increases toward 1 (navbar shrinks).
  * When the user scrolls **up**, progress decreases toward 0 (navbar grows back).
- *
- * Ported from the Earthfilter React implementation (framer-motion → motion-v).
  */
 export function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll()

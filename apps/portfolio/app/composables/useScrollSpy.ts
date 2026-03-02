@@ -38,7 +38,20 @@ export function useScrollSpy(sectionIds: string[]) {
     })
   }
 
-  onMounted(() => connect())
+  onMounted(() => {
+    connect()
+
+    // Scroll to section if URL has a hash on initial load
+    const hash = window.location.hash
+    if (hash) {
+      nextTick(() => {
+        const el = document.querySelector(hash)
+        if (el) {
+          setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+        }
+      })
+    }
+  })
 
   watch(
     () => route.fullPath,

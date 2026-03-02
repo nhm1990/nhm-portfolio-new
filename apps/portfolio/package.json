@@ -17,6 +17,7 @@
     "@nuxtjs/i18n": "^10.2.3",
     "@primeuix/themes": "^2.0.3",
     "@primevue/nuxt-module": "^4.5.4",
+    "@vueuse/core": "^14.2.1",
     "@vueuse/motion": "^3.0.3",
     "ag-charts-community": "^13.1.0",
     "ag-charts-vue3": "^13.1.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^25.3.2",
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"

@@ -48,6 +48,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      // Override with NUXT_PUBLIC_ECOSCOPE_URL in Vercel for production
+      ecoscopeUrl: process.env.NUXT_PUBLIC_ECOSCOPE_URL ?? 'http://localhost:3001',
+    },
+  },
+
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
 })

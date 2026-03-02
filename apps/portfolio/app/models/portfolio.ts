@@ -1,6 +1,7 @@
 export interface Client {
   name: string
   logo: string
+  url?: string
 }
 
 export interface Project {
@@ -24,6 +25,8 @@ export interface PortfolioContent {
   }
   clients: {
     title: string
+    subtitle: string
+    cta: string
     list: Client[]
   }
   portfolio: {

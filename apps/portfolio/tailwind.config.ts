@@ -77,6 +77,8 @@ export default {
         'gradient-hero':
           'radial-gradient(circle at 30% 50%, #e0f5e9 0%, #ffffff 50%, #f6f8f6 100%)',
         'gradient-dark': 'linear-gradient(135deg, #2C2D32 0%, #5a8a5a 100%)',
+        'gradient-vibrant': 'linear-gradient(135deg, #061410 0%, #0d3320 45%, #145c2e 100%)',
+        'gradient-forest': 'linear-gradient(135deg, #1d4a31 0%, #267146 60%, #2d8f54 100%)',
         // SVG Patterns - Natur + IT kombiniert
         'pattern-dots':
           "url(\"data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235a8a5a' fill-opacity='0.08'%3E%3Ccircle cx='2' cy='2' r='1'/%3E%3C/g%3E%3C/svg%3E\")",

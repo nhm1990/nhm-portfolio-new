@@ -11,8 +11,8 @@ definePageMeta({
     <PortfolioSection />
     <SkillsSection />
     <ExperienceSection />
-    <ContactSection />
     <ClientsSection />
+    <ContactSection />
     <FooterSection />
   </div>
 </template>

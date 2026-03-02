@@ -65,6 +65,8 @@ defineProps<{
     <NuxtLink
       v-if="link"
       :to="link"
+      :target="link?.startsWith('http') ? '_blank' : undefined"
+      :rel="link?.startsWith('http') ? 'noopener noreferrer' : undefined"
       class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sage-500 to-mint-500 text-white font-semibold rounded-xl hover:from-sage-400 hover:to-mint-400 transition-all shadow-lg hover:shadow-xl hover:scale-105 duration-300 text-sm"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
