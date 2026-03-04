@@ -1,10 +1,4 @@
 <script setup lang="ts">
-interface Emit {
-  onSubmit: [formData: { name: string; email: string; subject: string; message: string }]
-}
-
-const emit = defineEmits<Emit>()
-
 const { t } = useI18n({ useScope: 'global' })
 
 const formData = ref({
@@ -15,12 +9,20 @@ const formData = ref({
 })
 
 const isSubmitting = ref(false)
+const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
 
 const handleSubmit = async () => {
   isSubmitting.value = true
+  submitStatus.value = 'idle'
   try {
-    emit('onSubmit', { ...formData.value })
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: { ...formData.value },
+    })
+    submitStatus.value = 'success'
     formData.value = { name: '', email: '', subject: '', message: '' }
+  } catch {
+    submitStatus.value = 'error'
   } finally {
     isSubmitting.value = false
   }
@@ -85,7 +87,7 @@ const handleSubmit = async () => {
       />
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex flex-col items-center gap-4">
       <Button
         type="submit"
         :label="t('contact.form.sendButton')"
@@ -95,6 +97,13 @@ const handleSubmit = async () => {
         raised
         :loading="isSubmitting"
       />
+
+      <p v-if="submitStatus === 'success'" class="text-mint-600 font-semibold text-sm">
+        <Icon name="mdi:check-circle" class="mr-1" />{{ t('contact.form.successMessage') }}
+      </p>
+      <p v-else-if="submitStatus === 'error'" class="text-red-500 font-semibold text-sm">
+        <Icon name="mdi:alert-circle" class="mr-1" />{{ t('contact.form.errorMessage') }}
+      </p>
     </div>
   </form>
 </template>
