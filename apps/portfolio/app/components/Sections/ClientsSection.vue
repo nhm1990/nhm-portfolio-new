@@ -12,11 +12,18 @@ const scrollToContact = () => {
 </script>
 
 <template>
-  <section id="clients" class="relative py-20 bg-mint-50 bg-pattern-leaves overflow-hidden">
+  <section id="clients" class="relative py-20 bg-mint-100 overflow-hidden">
     <!-- Decorative blobs -->
-    <div class="absolute top-10 right-20 w-64 h-64 bg-mint-200 rounded-full blur-3xl opacity-25" />
     <div
-      class="absolute bottom-10 left-20 w-48 h-48 bg-mint-300 rounded-full blur-3xl opacity-20"
+      class="absolute top-10 right-10 w-96 h-96 bg-mint-200 rounded-full blur-3xl opacity-30 animate-float"
+    />
+    <div
+      class="absolute bottom-10 left-10 w-80 h-80 bg-sage-200 rounded-full blur-3xl opacity-25 animate-float"
+      style="animation-delay: 2s"
+    />
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-mint-300 rounded-full blur-3xl opacity-15 animate-float"
+      style="animation-delay: 1s"
     />
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -21,9 +21,9 @@ const handleContactClick = () => {
 
 <template>
   <div
-    class="relative overflow-hidden rounded-2xl bg-mint-300/50 p-[2px] shadow-xl drop-shadow-[0_0_20px_rgba(59,176,106,0.25)]"
+    class="relative overflow-hidden rounded-2xl bg-gradient-primary p-[3px] shadow-2xl drop-shadow-[0_0_40px_rgba(59,176,106,0.5)]"
   >
-    <!-- Spinning locomotive beam (motion-v) — dezent -->
+    <!-- Spinning locomotive beam (motion-v) -->
     <Motion
       tag="div"
       :style="{
@@ -31,22 +31,15 @@ const handleContactClick = () => {
         inset: '-50%',
         transformOrigin: 'center',
         background:
-          'conic-gradient(transparent 0deg, transparent 250deg, rgba(59,176,106,0.04) 262deg, rgba(110,231,183,0.18) 272deg, rgba(167,243,208,0.55) 279deg, rgba(255,255,255,0.85) 282deg, rgba(167,243,208,0.55) 285deg, rgba(110,231,183,0.18) 292deg, rgba(59,176,106,0.04) 302deg, transparent 314deg, transparent 360deg)',
+          'conic-gradient(transparent 0deg, transparent 245deg, rgba(110,231,183,0.7) 260deg, rgba(210,255,235,0.95) 272deg, rgba(255,255,255,1) 278deg, rgba(255,255,255,1) 282deg, rgba(210,255,235,0.95) 288deg, rgba(110,231,183,0.7) 300deg, transparent 315deg, transparent 360deg)',
         pointerEvents: 'none',
         zIndex: 1,
       }"
       :animate="{
         rotate: [0, 360],
-        opacity: [1, 0.95, 0.5, 0.95, 1, 0.7, 1, 1],
       }"
       :transition="{
         rotate: { duration: 5, ease: 'linear', repeat: Infinity },
-        opacity: {
-          duration: 1.1,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          times: [0, 0.48, 0.5, 0.52, 0.6, 0.71, 0.73, 1],
-        },
       }"
     />
 

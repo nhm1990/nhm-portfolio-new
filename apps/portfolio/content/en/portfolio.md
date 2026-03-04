@@ -114,7 +114,7 @@ portfolio:
       category: "Headless Commerce & CMS"
       description: "A fully custom headless Shopify storefront engineered with Hydrogen and Remix. The complete e-commerce stack in action — dynamic product pages, cart management, and seamless Shopify Storefront API integration via GraphQL, deployed on Shopify Oxygen. Proof that modern CMS architecture and headless commerce are well within reach."
       image: "/images/portfolio/portfolio_earthfilter.webp"
-      link: "https://www.earthfilter .de"
+      link: "https://www.earthfilter.de/en"
       technologies:
         - "React"
         - "Remix"
@@ -131,7 +131,7 @@ portfolio:
 contact:
   title: "Let's Work Together"
   subtitle: "Have a project in mind? I'd love to hear from you."
-  email: "contact@example.com"
+  email: "nhormesch@posteo.de"
   linkedin: "Nicolas Hormesch"
   github: "@nhm1990"
 ---

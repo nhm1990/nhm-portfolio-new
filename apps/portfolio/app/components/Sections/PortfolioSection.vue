@@ -38,11 +38,19 @@ const goToNext = () => {
   <section id="portfolio" class="relative min-h-screen bg-gradient-soft overflow-hidden">
     <!-- Background decoration -->
     <div
-      class="absolute top-40 left-0 w-96 h-96 bg-sage-200 rounded-full blur-3xl opacity-20 animate-pulse"
+      class="absolute top-20 left-0 w-[28rem] h-[28rem] bg-sage-200 rounded-full blur-3xl opacity-30 animate-float"
     />
     <div
-      class="absolute bottom-40 right-0 w-96 h-96 bg-mint-200 rounded-full blur-3xl opacity-20 animate-pulse"
+      class="absolute bottom-20 right-0 w-[28rem] h-[28rem] bg-mint-200 rounded-full blur-3xl opacity-25 animate-float"
       style="animation-delay: 1s"
+    />
+    <div
+      class="absolute top-1/2 right-1/4 w-80 h-80 bg-sage-300 rounded-full blur-3xl opacity-20 animate-float"
+      style="animation-delay: 2s"
+    />
+    <div
+      class="absolute bottom-1/3 left-1/3 w-72 h-72 bg-mint-300 rounded-full blur-3xl opacity-15 animate-float"
+      style="animation-delay: 3s"
     />
 
     <!-- 3D Scene — fixed viewport height so monitor size never changes with content -->
@@ -63,7 +71,7 @@ const goToNext = () => {
       <div v-if="currentProject" class="flex justify-end mt-12">
         <div class="w-full lg:w-1/2 lg:pl-8">
           <div
-            class="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sage-100/30"
+            class="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sage-100/30"
           >
             <PortfolioProjectInfo
               :project="currentProject"

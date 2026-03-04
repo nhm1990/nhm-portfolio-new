@@ -1,8 +1,8 @@
 ---
 title: Skills & Expertise
-subtitle: Technologies & Tools I Work With
+subtitle: Technologien & Tools, mit denen ich arbeite
 categories:
-  - name: Frontend Development
+  - name: Frontend-Entwicklung
     skills:
       - name: Vue
         level: expert
@@ -18,13 +18,13 @@ categories:
         url: https://www.typescriptlang.org
       - name: JavaScript
         level: expert
-        url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+        url: https://developer.mozilla.org/de/docs/Web/JavaScript
       - name: HTML
         level: expert
-        url: https://developer.mozilla.org/en-US/docs/Web/HTML
+        url: https://developer.mozilla.org/de/docs/Web/HTML
       - name: CSS
         level: expert
-        url: https://developer.mozilla.org/en-US/docs/Web/CSS
+        url: https://developer.mozilla.org/de/docs/Web/CSS
       - name: Tailwind
         level: advanced
         url: https://tailwindcss.com
@@ -44,7 +44,7 @@ categories:
       - name: Sketch
         level: intermediate
         url: https://www.sketch.com
-  - name: Backend & Database
+  - name: Backend & Datenbank
     skills:
       - name: Node.js
         level: advanced
@@ -69,7 +69,7 @@ categories:
         url: https://redis.io
       - name: WebSocket
         level: intermediate
-        url: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+        url: https://developer.mozilla.org/de/docs/Web/API/WebSockets_API
   - name: Mobile
     skills:
       - name: Kotlin
@@ -78,7 +78,7 @@ categories:
       - name: Android
         level: intermediate
         url: https://developer.android.com
-  - name: AI & Machine Learning
+  - name: KI & Machine Learning
     skills:
       - name: TensorFlow
         level: intermediate
@@ -88,7 +88,7 @@ categories:
         url: https://platform.openai.com
       - name: Azure ML
         level: intermediate
-        url: https://azure.microsoft.com/en-us/products/machine-learning
+        url: https://azure.microsoft.com/de-de/products/machine-learning
   - name: DevOps & Cloud
     skills:
       - name: Docker
@@ -102,11 +102,11 @@ categories:
         url: https://github.com
       - name: Azure DevOps
         level: advanced
-        url: https://azure.microsoft.com/en-us/products/devops
+        url: https://azure.microsoft.com/de-de/products/devops
       - name: GitLab
         level: intermediate
         url: https://gitlab.com
-  - name: Tools & Methods
+  - name: Tools & Methoden
     skills:
       - name: Jira
         level: intermediate
@@ -130,10 +130,10 @@ certifications:
     date: 03/2021
 
 languages:
-  - name: German
-    level: Native
-  - name: English
-    level: Business Fluent
-  - name: French
-    level: Basic Knowledge
+  - name: Deutsch
+    level: Muttersprache
+  - name: Englisch
+    level: Geschäftsfließend
+  - name: Französisch
+    level: Grundkenntnisse
 ---

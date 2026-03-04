@@ -5,9 +5,8 @@ hero:
   title: "Software-Entwickler"
   description: "Ich entwickle moderne, skalierbare Webanwendungen und helfe Unternehmen, ihre Ideen in leistungsstarke digitale Lösungen zu verwandeln."
 clients:
-  title: "Vertraut von führenden Unternehmen"
-  subtitle: "Ich hatte das Privileg, mit diesen Unternehmen zu arbeiten"
-  cta: "Ist dein Unternehmen das nächste? Lass uns reden"
+  title: "Von führenden Unternehmen geschätzt"
+  cta: "Ist deine Marke die nächste? Lass uns reden"
   list:
     - name: "Allianz"
       logo: "/images/customerlogo/allianz-logo.webp"
@@ -115,7 +114,7 @@ portfolio:
       category: "Headless Commerce & CMS"
       description: "Maßgeschneiderter Headless-Shopify-Webshop, entwickelt mit Hydrogen und Remix. Eine vollständige E-Commerce-Lösung mit dynamischen Produktseiten, Warenkorbmanagement und nahtloser Shopify-Storefront-API-Integration via GraphQL — deployed auf Shopify Oxygen. Zeigt, dass ich CMS-Systeme und moderne Webshop-Architekturen vollständig beherrsche."
       image: "/images/portfolio/portfolio_earthfilter.webp"
-      link: "https://www.earthfilter .de"
+      link: "https://www.earthfilter.de"
       technologies:
         - "React"
         - "Remix"
@@ -130,9 +129,9 @@ portfolio:
         - "Vollständige GraphQL-Integration mit typsicherem Codegen"
         - "SSR & Streaming mit Remix für maximale Performance"
 contact:
-  title: "Lassen Sie uns zusammenarbeiten"
-  subtitle: "Haben Sie ein Projekt im Kopf? Ich würde gerne von Ihnen hören."
-  email: "contact@example.com"
+  title: "Lass uns zusammenarbeiten"
+  subtitle: "Hast du ein Projekt im Kopf? Ich freue mich, von dir zu hören."
+  email: "nhormesch@posteo.de"
   linkedin: "Nicolas Hormesch"
   github: "@nhm1990"
 ---

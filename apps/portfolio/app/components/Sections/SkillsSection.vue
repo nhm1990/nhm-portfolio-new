@@ -1,12 +1,25 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
+import type { Collections } from '@nuxt/content'
 import type { Skill, SkillsContent } from '~/models/skills'
 
-const { data: rawData } = await useAsyncData('skills', () =>
-  queryCollection('content_en').path('/skills').first()
+const { locale } = useI18n({ useScope: 'global' })
+
+const { data: rawData } = await useAsyncData(
+  'skills',
+  async () => {
+    const collection = ('content_' + locale.value) as keyof Collections
+    const result = await queryCollection(collection).path('/skills').first()
+    if (!result && locale.value !== 'en') {
+      return await queryCollection('content_en').path('/skills').first()
+    }
+    return result
+  },
+  { watch: [locale] }
 )
 
 const skillsData = computed(() => rawData.value?.meta as unknown as SkillsContent | null)
+const skillsTitle = computed(() => rawData.value?.title ?? 'Skills & Expertise')
 
 const allSkills = computed<Skill[]>(() => {
   if (!skillsData.value?.categories) return []
@@ -30,7 +43,7 @@ const laneBFast = computed(() => allSkills.value.filter((s) => s.level === 'inte
 </script>
 
 <template>
-  <section id="skills" class="relative py-24 bg-sage-50 overflow-hidden">
+  <section id="skills" class="relative py-24 bg-sage-100 overflow-hidden">
     <!-- Background blur accents -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-sage-300 rounded-full blur-3xl opacity-20" />
     <div class="absolute bottom-0 left-0 w-80 h-80 bg-mint-300 rounded-full blur-3xl opacity-20" />
@@ -48,9 +61,9 @@ const laneBFast = computed(() => allSkills.value.filter((s) => s.level === 'inte
         <h2
           class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-text bg-clip-text text-transparent"
         >
-          Skills & Expertise
+          {{ skillsTitle }}
         </h2>
-        <p class="text-xl text-charcoal-600">Technologies & Tools I Work With</p>
+        <p class="text-xl text-charcoal-600">{{ skillsData?.subtitle }}</p>
       </Motion>
 
       <!-- Highway -->

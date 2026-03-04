@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import type { Collections } from '@nuxt/content'
 import type { TimelineEvent, ExperienceProject } from '~/types/experience'
 
-const { data: rawData } = await useAsyncData('experience', () =>
-  queryCollection('content_en').path('/experience').first()
+const { locale } = useI18n({ useScope: 'global' })
+
+const { data: rawData } = await useAsyncData(
+  'experience',
+  async () => {
+    const collection = ('content_' + locale.value) as keyof Collections
+    const result = await queryCollection(collection).path('/experience').first()
+    if (!result && locale.value !== 'en') {
+      return await queryCollection('content_en').path('/experience').first()
+    }
+    return result
+  },
+  { watch: [locale] }
 )
 
 const experienceData = computed(() => rawData.value?.meta || null)
+const experienceTitle = computed(() => rawData.value?.title ?? 'Professional Experience')
+const experienceSubtitle = computed(
+  () => (rawData.value?.meta as any)?.subtitle ?? 'Recent Projects & Achievements'
+)
 
 const selectedProject = ref<ExperienceProject | null>(null)
 const dialogVisible = ref(false)
@@ -47,13 +63,21 @@ const timelineEvents = computed<TimelineEvent[]>(() => {
 </script>
 
 <template>
-  <section id="experience" class="relative py-20 bg-white bg-pattern-dots overflow-hidden">
+  <section id="experience" class="relative py-20 bg-white overflow-hidden">
     <div
-      class="absolute top-10 left-10 w-64 h-64 bg-mint-100 rounded-full blur-3xl opacity-40 animate-float"
+      class="absolute top-10 left-10 w-80 h-80 bg-mint-200 rounded-full blur-3xl opacity-35 animate-float"
     />
     <div
-      class="absolute bottom-20 right-20 w-72 h-72 bg-mint-200 rounded-full blur-3xl opacity-30 animate-float"
+      class="absolute bottom-20 right-10 w-96 h-96 bg-sage-200 rounded-full blur-3xl opacity-25 animate-float"
       style="animation-delay: 2s"
+    />
+    <div
+      class="absolute top-1/2 right-1/3 w-64 h-64 bg-mint-300 rounded-full blur-3xl opacity-20 animate-float"
+      style="animation-delay: 1s"
+    />
+    <div
+      class="absolute bottom-1/3 left-1/4 w-72 h-72 bg-sage-300 rounded-full blur-3xl opacity-15 animate-float"
+      style="animation-delay: 3s"
     />
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,9 +90,9 @@ const timelineEvents = computed<TimelineEvent[]>(() => {
         <h2
           class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-text bg-clip-text text-transparent"
         >
-          Professional Experience
+          {{ experienceTitle }}
         </h2>
-        <p class="text-xl text-sage-600">Recent Projects & Achievements</p>
+        <p class="text-xl text-sage-600">{{ experienceSubtitle }}</p>
       </div>
 
       <div

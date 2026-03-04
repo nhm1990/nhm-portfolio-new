@@ -8,21 +8,6 @@
 		"clients": "Kunden",
 		"contact": "Kontakt"
 	},
-	"hero": {
-		"greeting": "Hallo, ich bin Nicolas",
-		"title": "Software-Entwickler",
-		"description": "Ich entwickle moderne, skalierbare Webanwendungen und helfe Unternehmen, ihre Ideen in leistungsstarke digitale Lösungen zu verwandeln."
-	},
-	"clients": {
-		"title": "Vertraut von führenden Unternehmen",
-		"subtitle": "Ich hatte die Ehre, mit diesen Unternehmen zu arbeiten",
-		"cta": "Ist Ihre Marke die nächste? Lassen Sie uns sprechen"
-	},
-	"portfolio": {
-		"title": "Arbeit im Mittelpunkt",
-		"subtitle": "Entdecken Sie meine neuesten Projekte",
-		"explore": "Erkunden Sie meine Arbeit weiter"
-	},
 	"marquee": {
 		"text": "Ich reiche ein. Ich antworte. Ich verifiziere. Ich bestätige. Ich validiere. Ich prüfe. Ich stelle sicher. Ich garantiere. Ich verspreche. Ich liefere. Ich bin erfolgreich. Ich gewinne. Ich triumphiere. Ich meistere. Ich erobere. Ich erreiche. Ich vollende. Ich beende. Ich initiiere. Ich starte. Ich löse aus. Ich beginne. Ich ermögliche. Ich engagiere. Ich fange an. Ich laufe. Ich führe aus. Ich führe durch. Ich mache. Ich handle. Ich arbeite. Ich funktioniere. Ich operiere. Ich gehe. Ich bewege. Ich schreite. Ich wandere. Ich jogge. Ich sprinte. Ich rase. Ich eile. Ich hetze. Ich beschleunige. Ich renne."
 	},
@@ -38,10 +23,10 @@
 			"email": "E-Mail",
 			"subject": "Betreff",
 			"message": "Nachricht",
-			"namePlaceholder": "Ihr Name",
-			"emailPlaceholder": "ihre{'@'}email.de",
-			"subjectPlaceholder": "Projektbesprechung",
-			"messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt...",
+			"namePlaceholder": "Dein Name",
+			"emailPlaceholder": "deine{'@'}email.de",
+			"subjectPlaceholder": "Projektidee",
+			"messagePlaceholder": "Erzähl mir von deinem Projekt...",
 			"sendButton": "Nachricht senden",
 			"successMessage": "Nachricht erfolgreich gesendet!",
 			"errorMessage": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."

@@ -24,6 +24,7 @@ export interface Language {
 
 export interface SkillsContent {
   title: string
+  subtitle: string
   categories: SkillCategory[]
   certifications: Certification[]
   languages: Language[]
