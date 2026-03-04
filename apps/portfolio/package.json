@@ -17,6 +17,9 @@
     "@nuxtjs/i18n": "^10.2.3",
     "@primeuix/themes": "^2.0.3",
     "@primevue/nuxt-module": "^4.5.4",
+    "@tresjs/cientos": "^5.4.0",
+    "@tresjs/nuxt": "^5.3.0",
+    "@types/three": "^0.183.1",
     "@vueuse/core": "^14.2.1",
     "@vueuse/motion": "^3.0.3",
     "ag-charts-community": "^13.1.0",
@@ -26,7 +29,8 @@
     "better-sqlite3": "^12.6.2",
     "motion-v": "^2.0.0-beta.5",
     "nuxt": "^4.3.1",
-    "primevue": "^4.5.4"
+    "primevue": "^4.5.4",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",

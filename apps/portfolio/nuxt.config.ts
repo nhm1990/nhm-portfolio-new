@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@vueuse/motion/nuxt',
+    '@tresjs/nuxt',
   ],
 
   primevue: {
