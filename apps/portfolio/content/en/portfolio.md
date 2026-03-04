@@ -9,19 +9,19 @@ clients:
   cta: "Is your brand next? Let's chat"
   list:
     - name: "Allianz"
-      logo: "/images/customerlogo/allianz-logo-png.png"
+      logo: "/images/customerlogo/allianz-logo.webp"
       url: "https://www.allianz.de"
     - name: "Siemens"
-      logo: "/images/customerlogo/siemens-logo-png.png"
+      logo: "/images/customerlogo/siemens-logo.webp"
       url: "https://www.siemens.com"
     - name: "BASF"
       logo: "/images/customerlogo/basf-logo-png.png"
       url: "https://www.basf.com"
     - name: "DHL"
-      logo: "/images/customerlogo/dhl-logo-png.png"
+      logo: "/images/customerlogo/dhl-logo.webp"
       url: "https://www.dhl.de"
     - name: "Deutsche Bahn"
-      logo: "/images/customerlogo/deutsche-bahn-ag-logo.png"
+      logo: "/images/customerlogo/deutsche-bahn-ag-logo.webp"
       url: "https://www.bahn.de"
 portfolio:
   title: "Featured Projects"
@@ -32,7 +32,7 @@ portfolio:
       client: "Allianz"
       category: "Enterprise Application"
       description: "Data-driven life insurance platform featuring comprehensive policy management, real-time analytics, and advanced reporting. Built with AG Grid for complex data visualization and Excel-like data manipulation capabilities."
-      image: "/images/portfolio/portfolio_allianz.png"
+      image: "/images/portfolio/portfolio_allianz.webp"
       technologies:
         - "Angular"
         - "TypeScript"
@@ -52,7 +52,7 @@ portfolio:
       client: "DHL & Deutsche Bahn"
       category: "Mobile & Backend"
       description: "B2B logistics application enabling drivers to manage shipments on-the-go. Features GPS tracking, central hub coordination, and intelligent route optimization allowing drivers to swap trucks mid-route and return home daily."
-      image: "/images/portfolio/portfolio_dhl.png"
+      image: "/images/portfolio/portfolio_dhl.webp"
       technologies:
         - "Kotlin"
         - "Android"
@@ -73,7 +73,7 @@ portfolio:
       client: "BASF"
       category: "AI & Web Application"
       description: "Intelligent lab management system supporting chemists in experiment planning and execution. AI-driven suggestions for lab journal entries, experiment protocols, and safety recommendations based on project context."
-      image: "/images/portfolio/portfolio_basf.png"
+      image: "/images/portfolio/portfolio_basf.webp"
       technologies:
         - "Vue 3"
         - "TypeScript"
@@ -94,7 +94,7 @@ portfolio:
       client: "Personal Project"
       category: "Data Visualization & Analytics"
       description: "Interactive environmental monitoring platform featuring real-time air quality data from 25+ global cities, advanced AG Charts visualizations, and a powerful AG Grid data explorer with inline editing, validation, and CSV export."
-      image: "/images/portfolio/portfolio_ecoscope.png"
+      image: "/images/portfolio/portfolio_ecoscope.webp"
       link: "$ecoscope"
       technologies:
         - "Vue 3"
@@ -113,7 +113,7 @@ portfolio:
       client: "earthfilter "
       category: "Headless Commerce & CMS"
       description: "A fully custom headless Shopify storefront engineered with Hydrogen and Remix. The complete e-commerce stack in action — dynamic product pages, cart management, and seamless Shopify Storefront API integration via GraphQL, deployed on Shopify Oxygen. Proof that modern CMS architecture and headless commerce are well within reach."
-      image: "/images/portfolio/portfolio_earthfilter .png"
+      image: "/images/portfolio/portfolio_earthfilter.webp"
       link: "https://www.earthfilter .de"
       technologies:
         - "React"

@@ -47,7 +47,7 @@ const goToNext = () => {
 
     <!-- 3D Scene — fixed viewport height so monitor size never changes with content -->
     <ClientOnly v-if="currentProject">
-      <div class="absolute top-0 left-0 w-full h-screen pointer-events-none">
+      <div class="absolute top-0 left-0 w-full h-screen pointer-events-none hidden lg:block">
         <PortfolioScene :image-src="currentProject.image" :direction="direction" />
       </div>
       <template #fallback>
@@ -63,7 +63,7 @@ const goToNext = () => {
       <div v-if="currentProject" class="flex justify-end mt-12">
         <div class="w-full lg:w-1/2 lg:pl-8">
           <div
-            class="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sage-100/50"
+            class="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sage-100/30"
           >
             <PortfolioProjectInfo
               :project="currentProject"
