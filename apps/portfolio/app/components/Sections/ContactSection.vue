@@ -22,7 +22,6 @@ const handleFormSubmit = async (formData: {
 
 <template>
   <section id="contact" class="relative py-20 bg-white overflow-hidden">
-    <!-- Decorative blobs -->
     <div
       class="absolute top-0 right-0 w-96 h-96 bg-mint-200 rounded-full blur-3xl opacity-25 animate-float"
     />
@@ -42,11 +41,6 @@ const handleFormSubmit = async (formData: {
       <!-- Form card -->
       <div class="bg-white rounded-2xl shadow-xl border border-sage-100 p-8 md:p-12">
         <ContactForm @on-submit="handleFormSubmit" />
-        <ContactInfoLinks
-          :email="content?.email"
-          :linkedin="content?.linkedin"
-          :github="content?.github"
-        />
       </div>
     </div>
   </section>

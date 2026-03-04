@@ -13,6 +13,5 @@ definePageMeta({
     <ExperienceSection />
     <ClientsSection />
     <ContactSection />
-    <FooterSection />
   </div>
 </template>

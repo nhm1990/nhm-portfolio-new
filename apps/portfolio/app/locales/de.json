@@ -9,7 +9,8 @@
 		"contact": "Kontakt"
 	},
 	"marquee": {
-		"text": "Ich reiche ein. Ich antworte. Ich verifiziere. Ich bestätige. Ich validiere. Ich prüfe. Ich stelle sicher. Ich garantiere. Ich verspreche. Ich liefere. Ich bin erfolgreich. Ich gewinne. Ich triumphiere. Ich meistere. Ich erobere. Ich erreiche. Ich vollende. Ich beende. Ich initiiere. Ich starte. Ich löse aus. Ich beginne. Ich ermögliche. Ich engagiere. Ich fange an. Ich laufe. Ich führe aus. Ich führe durch. Ich mache. Ich handle. Ich arbeite. Ich funktioniere. Ich operiere. Ich gehe. Ich bewege. Ich schreite. Ich wandere. Ich jogge. Ich sprinte. Ich rase. Ich eile. Ich hetze. Ich beschleunige. Ich renne."
+		"text": "Ich reiche ein. Ich antworte. Ich verifiziere. Ich bestätige. Ich validiere. Ich prüfe. Ich stelle sicher. Ich garantiere. Ich verspreche. Ich liefere. Ich bin erfolgreich. Ich meistere. Ich erobere. Ich erreiche. Ich vollende. Ich beende. Ich initiiere. Ich starte. Ich löse aus. Ich beginne. Ich ermögliche. Ich engagiere. Ich fange an. Ich laufe. Ich führe aus. Ich führe durch. Ich mache. Ich handle. Ich arbeite. Ich funktioniere. Ich operiere. Ich gehe. Ich bewege. Ich schreite. Ich wandere. Ich jogge. Ich sprinte. Ich rase. Ich eile. Ich hetze. Ich beschleunige. Ich renne.",
+		"happy": "Ich mache dich glücklich!"
 	},
 	"footer": {
 		"description": "Software-Entwickler mit Leidenschaft für moderne, skalierbare Webanwendungen.",

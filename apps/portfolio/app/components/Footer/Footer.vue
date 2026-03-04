@@ -44,12 +44,10 @@
           <h4 class="font-semibold mb-4">{{ t('footer.connect') }}</h4>
           <div class="flex space-x-4">
             <a
-              href="https://github.com/nhm1990"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors p-2"
+              href="mailto:nhormesch@posteo.de"
+              class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
             >
-              <NuxtImg src="/images/github.png" alt="GitHub" class="w-full h-full object-contain" />
+              <Icon name="mdi:email" class="text-2xl text-white" />
             </a>
             <a
               href="https://www.linkedin.com/in/nicolas-hormesch-432411280/"
@@ -64,10 +62,12 @@
               />
             </a>
             <a
-              href="mailto:nhormesch@posteo.de"
-              class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+              href="https://github.com/nhm1990"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors p-2"
             >
-              <Icon name="mdi:email" class="text-2xl text-white" />
+              <NuxtImg src="/images/github.png" alt="GitHub" class="w-full h-full object-contain" />
             </a>
           </div>
         </div>

@@ -6,5 +6,6 @@ useScrollSpy(['home', 'portfolio', 'skills', 'experience', 'clients', 'contact']
   <div class="min-h-screen bg-[#FFFFF8]">
     <Navbar />
     <slot />
+    <Footer />
   </div>
 </template>
