@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "buildCommand": "cd ../.. && pnpm --filter @nhm/portfolio build",
+  "outputDirectory": ".output"
+}
