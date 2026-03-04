@@ -6,7 +6,7 @@ hero:
   description: "I build modern, scalable web applications and help businesses transform their ideas into powerful digital solutions."
 clients:
   title: "Trusted by Leading Companies"
-  cta: "Is your brand next? Let's chat"
+  cta: "Is your brand next? Let's chat."
   list:
     - name: "Allianz"
       logo: "/images/customerlogo/allianz-logo.webp"

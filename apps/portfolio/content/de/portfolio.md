@@ -6,7 +6,7 @@ hero:
   description: "Ich entwickle moderne, skalierbare Webanwendungen und helfe Unternehmen, ihre Ideen in leistungsstarke digitale Lösungen zu verwandeln."
 clients:
   title: "Von führenden Unternehmen geschätzt"
-  cta: "Ist deine Marke die nächste? Lass uns reden"
+  cta: "Ist deine Marke die nächste? Lass uns reden."
   list:
     - name: "Allianz"
       logo: "/images/customerlogo/allianz-logo.webp"
