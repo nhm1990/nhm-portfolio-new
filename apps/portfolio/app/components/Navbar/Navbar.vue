@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { Motion, useTransform } from 'motion-v'
+import { Motion } from 'motion-v'
 
 const { locale, setLocale, t } = useI18n({ useScope: 'global' })
 const mobileMenuOpen = ref(false)
-
-const { scrollYBoundedProgress } = useBoundedScroll(400)
-const scrollYBoundedProgressDelayed = useTransform(scrollYBoundedProgress, [0, 0.75, 1], [0, 0, 1])
-const navHeight = useTransform(scrollYBoundedProgressDelayed, [0, 1], [80, 52])
 
 const navItems = computed(() => [
   { id: 'portfolio', label: t('nav.portfolio') },
@@ -47,8 +43,7 @@ const handleMobileNavClick = (id: string) => {
 <template>
   <Motion
     tag="nav"
-    class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm overflow-hidden"
-    :style="{ height: navHeight }"
+    class="fixed top-0 left-0 right-0 z-50 h-20 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm overflow-hidden"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
       <div class="flex justify-between items-center h-full">
