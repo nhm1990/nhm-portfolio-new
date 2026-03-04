@@ -71,7 +71,7 @@ const scrollToSection = (id: string) => {
             </span>
           </div>
           <h1
-            class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent"
+            class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 pb-2 bg-gradient-text bg-clip-text text-transparent"
           >
             {{ content?.title }}
           </h1>

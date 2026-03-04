@@ -59,7 +59,7 @@ const laneBFast = computed(() => allSkills.value.filter((s) => s.level === 'inte
         :viewport="{ once: true }"
       >
         <h2
-          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-text bg-clip-text text-transparent"
+          class="text-4xl md:text-5xl font-bold mb-4 pb-2 bg-gradient-text bg-clip-text text-transparent"
         >
           {{ skillsTitle }}
         </h2>

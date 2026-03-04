@@ -16,7 +16,9 @@ defineProps<{
     :transition="{ duration: 0.7, ease: 'easeOut' }"
     :viewport="{ once: true }"
   >
-    <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent">
+    <h2
+      class="text-5xl md:text-6xl font-bold mb-6 pb-2 bg-gradient-text bg-clip-text text-transparent"
+    >
       {{ title }}
     </h2>
     <p class="text-xl md:text-2xl text-charcoal-600 max-w-3xl mx-auto">

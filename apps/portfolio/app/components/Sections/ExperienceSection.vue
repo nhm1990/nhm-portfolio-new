@@ -88,7 +88,7 @@ const timelineEvents = computed<TimelineEvent[]>(() => {
         class="text-center mb-16"
       >
         <h2
-          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-text bg-clip-text text-transparent"
+          class="text-4xl md:text-5xl font-bold mb-4 pb-2 bg-gradient-text bg-clip-text text-transparent"
         >
           {{ experienceTitle }}
         </h2>
