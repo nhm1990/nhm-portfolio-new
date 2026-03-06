@@ -6,7 +6,7 @@ import type { Skill, SkillsContent } from '~/models/skills'
 const { locale } = useI18n({ useScope: 'global' })
 
 const { data: rawData } = await useAsyncData(
-  'skills',
+  () => `skills-${locale.value}`,
   async () => {
     const collection = ('content_' + locale.value) as keyof Collections
     const result = await queryCollection(collection).path('/skills').first()
@@ -14,8 +14,7 @@ const { data: rawData } = await useAsyncData(
       return await queryCollection('content_en').path('/skills').first()
     }
     return result
-  },
-  { watch: [locale] }
+  }
 )
 
 const skillsData = computed(() => rawData.value?.meta as unknown as SkillsContent | null)

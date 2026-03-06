@@ -5,7 +5,7 @@ import type { TimelineEvent, ExperienceProject } from '~/types/experience'
 const { locale } = useI18n({ useScope: 'global' })
 
 const { data: rawData } = await useAsyncData(
-  'experience',
+  () => `experience-${locale.value}`,
   async () => {
     const collection = ('content_' + locale.value) as keyof Collections
     const result = await queryCollection(collection).path('/experience').first()
@@ -13,8 +13,7 @@ const { data: rawData } = await useAsyncData(
       return await queryCollection('content_en').path('/experience').first()
     }
     return result
-  },
-  { watch: [locale] }
+  }
 )
 
 const experienceData = computed(() => rawData.value?.meta || null)
