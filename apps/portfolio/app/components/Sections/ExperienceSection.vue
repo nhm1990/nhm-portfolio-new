@@ -1,20 +1,8 @@
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
+import { useContentData } from '~/composables/useSectionData'
 import type { TimelineEvent, ExperienceProject } from '~/types/experience'
 
-const { locale } = useI18n({ useScope: 'global' })
-
-const { data: rawData } = await useAsyncData(
-  () => `experience-${locale.value}`,
-  async () => {
-    const collection = ('content_' + locale.value) as keyof Collections
-    const result = await queryCollection(collection).path('/experience').first()
-    if (!result && locale.value !== 'en') {
-      return await queryCollection('content_en').path('/experience').first()
-    }
-    return result
-  }
-)
+const { data: rawData } = await useContentData('/experience')
 
 const experienceData = computed(() => rawData.value?.meta || null)
 const experienceTitle = computed(() => rawData.value?.title ?? 'Professional Experience')

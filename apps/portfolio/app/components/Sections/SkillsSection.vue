@@ -1,21 +1,9 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import type { Collections } from '@nuxt/content'
+import { useContentData } from '~/composables/useSectionData'
 import type { Skill, SkillsContent } from '~/models/skills'
 
-const { locale } = useI18n({ useScope: 'global' })
-
-const { data: rawData } = await useAsyncData(
-  () => `skills-${locale.value}`,
-  async () => {
-    const collection = ('content_' + locale.value) as keyof Collections
-    const result = await queryCollection(collection).path('/skills').first()
-    if (!result && locale.value !== 'en') {
-      return await queryCollection('content_en').path('/skills').first()
-    }
-    return result
-  }
-)
+const { data: rawData } = await useContentData('/skills')
 
 const skillsData = computed(() => rawData.value?.meta as unknown as SkillsContent | null)
 const skillsTitle = computed(() => rawData.value?.title ?? 'Skills & Expertise')

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const { data: content } = useSectionData('hero')
+const { data: content } = await useSectionData('hero')
 
 const seoTitle = computed(() =>
   locale.value === 'de'

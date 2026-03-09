@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const { data: content } = useSectionData('portfolio')
+const { data: content } = await useSectionData('portfolio')
 const config = useRuntimeConfig()
 
 const currentIndex = ref(0)

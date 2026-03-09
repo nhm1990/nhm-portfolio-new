@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: content } = useSectionData('contact')
+const { data: content } = await useSectionData('contact')
 </script>
 
 <template>

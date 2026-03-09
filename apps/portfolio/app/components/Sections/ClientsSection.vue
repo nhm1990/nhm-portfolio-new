@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n({ useScope: 'global' })
-const { data: content } = useSectionData('clients')
+const { data: content } = await useSectionData('clients')
 
 const scrollToContact = () => {
   const element = document.getElementById('contact')
