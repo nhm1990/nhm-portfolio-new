@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "installCommand": "npm install -g pnpm@10.28.2 && cd ../.. && pnpm install --no-frozen-lockfile",
+  "installCommand": "corepack enable && corepack prepare pnpm@10.28.2 --activate && cd ../.. && pnpm install --no-frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm --filter @nhm/portfolio build",
   "outputDirectory": ".output"
 }
