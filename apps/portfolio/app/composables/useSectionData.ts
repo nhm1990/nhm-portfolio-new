@@ -5,9 +5,8 @@ import type { PortfolioContent } from '~/models/portfolio'
  * Fetches the full portfolio content file for the active locale and returns
  * a typed slice for the given section. Falls back to English if missing.
  *
- * Uses a static key (no locale suffix) so the SSR payload key always matches
- * the client hydration key. Locale changes are handled via `watch: [locale]`
- * which re-runs the handler reactively on the client.
+ * Uses a reactive function key so useAsyncData re-fetches automatically when
+ * locale changes. onMounted acts as a null-guard in case SSR payload was missed.
  *
  * Must be awaited in <script setup> to ensure SSR data is ready on first render.
  *
@@ -17,8 +16,8 @@ import type { PortfolioContent } from '~/models/portfolio'
 export async function useSectionData<K extends keyof PortfolioContent>(section: K) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const { data } = await useAsyncData(
-    `portfolio-${section}`,
+  const { data, refresh } = await useAsyncData(
+    () => `portfolio-${section}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path('/portfolio').first()
@@ -26,9 +25,12 @@ export async function useSectionData<K extends keyof PortfolioContent>(section: 
         return await queryCollection('content_en').path('/portfolio').first()
       }
       return result
-    },
-    { watch: [locale] }
+    }
   )
+
+  onMounted(() => {
+    if (!data.value) refresh()
+  })
 
   const sectionData = computed(() => {
     const meta = data.value?.meta as unknown as PortfolioContent | undefined
@@ -42,9 +44,8 @@ export async function useSectionData<K extends keyof PortfolioContent>(section: 
  * Fetches a content file at the given path for the active locale.
  * Falls back to English if the locale-specific file is missing.
  *
- * Uses a static key (no locale suffix) so the SSR payload key always matches
- * the client hydration key. Locale changes are handled via `watch: [locale]`
- * which re-runs the handler reactively on the client.
+ * Uses a reactive function key so useAsyncData re-fetches automatically when
+ * locale changes. onMounted acts as a null-guard in case SSR payload was missed.
  *
  * Must be awaited in <script setup> to ensure SSR data is ready on first render.
  *
@@ -54,8 +55,8 @@ export async function useSectionData<K extends keyof PortfolioContent>(section: 
 export async function useContentData(path: string) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const { data } = await useAsyncData(
-    `content-${path}`,
+  const { data, refresh } = await useAsyncData(
+    () => `content-${path}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path(path).first()
@@ -63,9 +64,12 @@ export async function useContentData(path: string) {
         return await queryCollection('content_en').path(path).first()
       }
       return result
-    },
-    { watch: [locale] }
+    }
   )
+
+  onMounted(() => {
+    if (!data.value) refresh()
+  })
 
   return { data }
 }
