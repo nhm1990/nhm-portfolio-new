@@ -1,6 +1,12 @@
 {
   "framework": null,
-  "installCommand": "corepack enable && corepack prepare pnpm@10.28.2 --activate && cd ../.. && pnpm install --no-frozen-lockfile",
+  "installCommand": "cd ../.. && pnpm install --no-frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm --filter @nhm/portfolio build",
-  "outputDirectory": ".output"
+  "outputDirectory": ".output",
+  "build": {
+    "env": {
+      "ENABLE_EXPERIMENTAL_COREPACK": "1",
+      "NODE_VERSION": "20"
+    }
+  }
 }
