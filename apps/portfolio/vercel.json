@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "installCommand": "cd ../.. && pnpm install --no-frozen-lockfile",
+  "installCommand": "npm install -g pnpm@10.28.2 && cd ../.. && pnpm install --no-frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm --filter @nhm/portfolio build",
   "outputDirectory": ".output"
 }
