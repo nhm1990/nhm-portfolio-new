@@ -18,18 +18,26 @@ import type { PortfolioContent } from '~/models/portfolio'
 export function useSectionData<K extends keyof PortfolioContent>(section: K) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     () => `portfolio-${section}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path('/portfolio').first()
       if (!result && locale.value !== 'en') {
-        const fallback = await queryCollection('content_en').path('/portfolio').first()
-        return (fallback?.meta as unknown as PortfolioContent)?.[section] ?? null
+        return queryCollection('content_en').path('/portfolio').first()
       }
-      return (result?.meta as unknown as PortfolioContent)?.[section] ?? null
+      return result
     }
   )
+
+  // Extract the section slice reactively — components access data.value?.title etc.
+  const data = computed(() => {
+    const raw = asyncData.data?.value
+    if (!raw) return undefined
+    return (raw.meta as unknown as PortfolioContent)?.[section]
+  })
+
+  return Object.assign(asyncData, { data })
 }
 
 /**
@@ -50,7 +58,7 @@ export function useContentData(path: string) {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path(path).first()
       if (!result && locale.value !== 'en') {
-        return await queryCollection('content_en').path(path).first()
+        return queryCollection('content_en').path(path).first()
       }
       return result
     }
