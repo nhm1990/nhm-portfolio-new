@@ -30,7 +30,7 @@ export default defineNuxtConfig({
       { code: 'de', name: 'Deutsch', file: 'de.json' },
     ],
     vueI18n: './i18n.config.ts',
-    detectBrowserLanguage: false,
+    detectBrowserLanguage: false, //test
   },
 
   fonts: {
