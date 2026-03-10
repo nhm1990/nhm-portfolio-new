@@ -41,6 +41,7 @@ export async function useSectionData<K extends keyof PortfolioContent>(section: 
  *
  * @example
  * const { data } = await useContentData('/skills')
+ * test
  */
 export async function useContentData(path: string) {
   const { locale } = useI18n({ useScope: 'global' })
