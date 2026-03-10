@@ -2,12 +2,15 @@ import type { Collections } from '@nuxt/content'
 import type { PortfolioContent } from '~/models/portfolio'
 
 /**
- * Fetches the full portfolio content file for the active locale and returns
- * a typed slice for the given section.
+ * Fetches the portfolio content for the active locale and returns the
+ * section slice directly. The composable is SYNCHRONOUS — components
+ * `await` the returned PromiseLike from `useAsyncData`.
  *
- * The composable is SYNCHRONOUS — it returns useAsyncData's Promise-like result
- * directly so the component can `await` it. This ensures Nuxt properly registers
- * the async data in the SSR payload and hydration works on first load.
+ * Key: getter function `() => \`...-${locale.value}\`` so Nuxt automatically
+ * re-fetches when locale changes (recommended by @nuxtjs/i18n maintainer).
+ * No `watch` option needed (causes infinite loading on homepage).
+ *
+ * @see https://github.com/nuxt-modules/i18n/issues/3599
  *
  * @example
  * const { data } = await useSectionData('hero')
@@ -15,40 +18,25 @@ import type { PortfolioContent } from '~/models/portfolio'
 export function useSectionData<K extends keyof PortfolioContent>(section: K) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const result = useAsyncData(
+  return useAsyncData(
     () => `portfolio-${section}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path('/portfolio').first()
       if (!result && locale.value !== 'en') {
-        return await queryCollection('content_en').path('/portfolio').first()
+        const fallback = await queryCollection('content_en').path('/portfolio').first()
+        return (fallback?.meta as unknown as PortfolioContent)?.[section] ?? null
       }
-      return result
-    },
-    {
-      // If SSR already fetched this key, use the payload directly — no client re-fetch.
-      // When locale changes the key changes, so getCachedData returns undefined → re-fetches.
-      getCachedData: (key, nuxtApp) =>
-        nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
+      return (result?.meta as unknown as PortfolioContent)?.[section] ?? null
     }
   )
-
-  const data = computed(() => {
-    const meta = result.data.value?.meta as unknown as PortfolioContent | undefined
-    return meta?.[section]
-  })
-
-  // Object.assign preserves the thenable interface from useAsyncData
-  // so components can still `await useSectionData(...)` for SSR suspension.
-  return Object.assign(result, { data })
 }
 
 /**
  * Fetches a content file at the given path for the active locale.
+ * Falls back to English if the locale-specific file is missing.
  *
- * The composable is SYNCHRONOUS — it returns useAsyncData's Promise-like result
- * directly so the component can `await` it. This ensures Nuxt properly registers
- * the async data in the SSR payload and hydration works on first load.
+ * @see https://github.com/nuxt-modules/i18n/issues/3599
  *
  * @example
  * const { data } = await useContentData('/skills')
@@ -65,10 +53,6 @@ export function useContentData(path: string) {
         return await queryCollection('content_en').path(path).first()
       }
       return result
-    },
-    {
-      getCachedData: (key, nuxtApp) =>
-        nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
     }
   )
 }
