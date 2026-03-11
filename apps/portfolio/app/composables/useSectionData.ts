@@ -2,42 +2,38 @@ import type { Collections } from '@nuxt/content'
 import type { PortfolioContent } from '~/models/portfolio'
 
 /**
- * Fetches the portfolio content for the active locale and returns the
- * section slice directly. The composable is SYNCHRONOUS — components
- * `await` the returned PromiseLike from `useAsyncData`.
+ * Fetches the full portfolio content file for the active locale and returns
+ * a typed slice for the given section. Falls back to English if missing.
  *
- * Key: getter function `() => \`...-${locale.value}\`` so Nuxt automatically
+ * Key: getter function `() => \`...-${locale.value}\`` ensures Nuxt
  * re-fetches when locale changes (recommended by @nuxtjs/i18n maintainer).
- * No `watch` option needed (causes infinite loading on homepage).
  *
  * @see https://github.com/nuxt-modules/i18n/issues/3599
  *
  * @example
  * const { data } = await useSectionData('hero')
  */
-export function useSectionData<K extends keyof PortfolioContent>(section: K) {
+export async function useSectionData<K extends keyof PortfolioContent>(section: K) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const asyncData = useAsyncData(
+  const { data } = await useAsyncData(
     () => `portfolio-${section}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path('/portfolio').first()
       if (!result && locale.value !== 'en') {
-        return queryCollection('content_en').path('/portfolio').first()
+        return await queryCollection('content_en').path('/portfolio').first()
       }
       return result
     }
   )
 
-  // Extract the section slice reactively — components access data.value?.title etc.
-  const data = computed(() => {
-    const raw = asyncData.data?.value
-    if (!raw) return undefined
-    return (raw.meta as unknown as PortfolioContent)?.[section]
+  const sectionData = computed(() => {
+    const meta = data.value?.meta as unknown as PortfolioContent | undefined
+    return meta?.[section]
   })
 
-  return Object.assign(asyncData, { data })
+  return { data: sectionData }
 }
 
 /**
@@ -49,18 +45,20 @@ export function useSectionData<K extends keyof PortfolioContent>(section: K) {
  * @example
  * const { data } = await useContentData('/skills')
  */
-export function useContentData(path: string) {
+export async function useContentData(path: string) {
   const { locale } = useI18n({ useScope: 'global' })
 
-  return useAsyncData(
+  const { data } = await useAsyncData(
     () => `content-${path}-${locale.value}`,
     async () => {
       const collection = ('content_' + locale.value) as keyof Collections
       const result = await queryCollection(collection).path(path).first()
       if (!result && locale.value !== 'en') {
-        return queryCollection('content_en').path(path).first()
+        return await queryCollection('content_en').path(path).first()
       }
       return result
     }
   )
+
+  return { data }
 }

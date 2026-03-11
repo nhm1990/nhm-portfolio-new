@@ -25,8 +25,7 @@ export default defineEventHandler(async (event) => {
         ? { hasData: true, type: typeof dePortfolio, isArray: Array.isArray(dePortfolio) }
         : null,
     }
-  }
-  catch (error: unknown) {
+  } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error)
     return {
       status: 'error',
