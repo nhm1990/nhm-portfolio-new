@@ -130,7 +130,7 @@ portfolio:
         - "SSR & Streaming mit Remix für maximale Performance"
 contact:
   title: "Lass uns zusammenarbeiten"
-  subtitle: "Hast du ein Projekt im Kopf? Ich freue mich, von dir zu hören."
+  subtitle: "Hast du ein Projekt im Kopf? Schreib mir einfach."
   email: "nhormesch@posteo.de"
   linkedin: "Nicolas Hormesch"
   github: "@nhm1990"
