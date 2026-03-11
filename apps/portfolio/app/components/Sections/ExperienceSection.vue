@@ -19,7 +19,7 @@ const openProjectDetails = (project: ExperienceProject) => {
 }
 
 const parseEndDate = (period: string): Date => {
-  if (period.includes('Present')) return new Date(9999, 11)
+  if (period.includes('Present') || period.includes('Heute')) return new Date(9999, 11)
   const matches = [...period.matchAll(/(\d{2})\/(\d{4})/g)]
   const last = matches.at(-1)
   if (last?.[1] && last?.[2]) return new Date(parseInt(last[2]), parseInt(last[1]) - 1)

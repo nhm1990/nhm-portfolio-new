@@ -5,7 +5,7 @@ const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const isMobileMenuOpen = ref(false)
 
-const portfolioUrl = computed(() => runtimeConfig.public.portfolioUrl || 'https://www.nicholashormesch.dev')
+const portfolioUrl = computed(() => runtimeConfig.public.portfolioUrl || 'https://www.hormesch.dev')
 
 const navLinks = [
   { name: 'Dashboard', path: '/', icon: 'mdi:view-dashboard-outline' },

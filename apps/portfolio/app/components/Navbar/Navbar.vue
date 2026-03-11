@@ -43,9 +43,9 @@ const handleMobileNavClick = (id: string) => {
 <template>
   <Motion
     tag="nav"
-    class="fixed top-0 left-0 right-0 z-50 h-20 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm overflow-hidden"
+    class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20">
       <div class="flex justify-between items-center h-full">
         <!-- Logo/Brand -->
         <div class="flex-shrink-0">
@@ -83,39 +83,40 @@ const handleMobileNavClick = (id: string) => {
 
         <!-- Mobile Menu Button -->
         <div class="md:hidden">
-          <Button
-            icon="pi pi-bars"
-            text
-            severity="secondary"
+          <button
+            class="p-2 rounded-md text-charcoal-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-200"
+            :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
             @click="mobileMenuOpen = !mobileMenuOpen"
-          />
+          >
+            <Icon :name="mobileMenuOpen ? 'mdi:close' : 'mdi:menu'" class="text-2xl" />
+          </button>
         </div>
       </div>
-
-      <!-- Mobile Navigation -->
-      <transition name="slide-down">
-        <div v-if="mobileMenuOpen" class="md:hidden pb-4 pt-2">
-          <div class="flex flex-col space-y-3">
-            <a
-              v-for="item in navItems"
-              :key="item.id"
-              :href="`#${item.id}`"
-              class="text-charcoal-900 hover:text-sage-600 transition-colors duration-300 font-medium py-2"
-              @click.prevent="handleMobileNavClick(item.id)"
-            >
-              {{ item.label }}
-            </a>
-            <button
-              class="flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-charcoal-700 border border-charcoal-300 hover:border-sage-500 hover:text-sage-600 transition-colors duration-200"
-              @click="toggleLanguage"
-            >
-              <Icon name="mdi:web" class="text-base" />
-              {{ locale === 'en' ? 'EN' : 'DE' }}
-            </button>
-          </div>
-        </div>
-      </transition>
     </div>
+
+    <!-- Mobile Navigation — outside the h-20 container so it isn't clipped -->
+    <transition name="slide-down">
+      <div v-if="mobileMenuOpen" class="md:hidden border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-4 pt-3 flex flex-col space-y-3">
+          <a
+            v-for="item in navItems"
+            :key="item.id"
+            :href="`#${item.id}`"
+            class="text-charcoal-900 hover:text-sage-600 transition-colors duration-300 font-medium py-2"
+            @click.prevent="handleMobileNavClick(item.id)"
+          >
+            {{ item.label }}
+          </a>
+          <button
+            class="flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-charcoal-700 border border-charcoal-300 hover:border-sage-500 hover:text-sage-600 transition-colors duration-200 self-start"
+            @click="toggleLanguage"
+          >
+            <Icon name="mdi:web" class="text-base" />
+            {{ locale === 'en' ? 'EN' : 'DE' }}
+          </button>
+        </div>
+      </div>
+    </transition>
   </Motion>
 </template>
 

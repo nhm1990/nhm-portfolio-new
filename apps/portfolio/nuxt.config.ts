@@ -58,6 +58,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  vite: {
+    ssr: {
+      noExternal: ['swiper'],
+    },
+  },
+
   runtimeConfig: {
     resendApiKey: process.env.RESEND_API_KEY,
     public: {

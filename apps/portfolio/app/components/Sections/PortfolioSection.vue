@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useSwipe } from '@vueuse/core'
 
 const { data: content } = await useSectionData('portfolio')
 const config = useRuntimeConfig()
 
 const currentIndex = ref(0)
 const direction = ref<'none' | 'left' | 'right'>('none')
+const sectionRef = ref<HTMLElement | null>(null)
 
 const projects = computed(() => content.value?.projects ?? [])
 const currentProject = computed(() => projects.value[currentIndex.value])
@@ -32,10 +34,22 @@ const goToNext = () => {
     currentIndex.value++
   }
 }
+
+useSwipe(sectionRef, {
+  onSwipeEnd(_e, swipeDirection) {
+    if (swipeDirection === 'left') goToNext()
+    if (swipeDirection === 'right') goToPrev()
+  },
+  threshold: 50,
+})
 </script>
 
 <template>
-  <section id="portfolio" class="relative min-h-screen bg-gradient-soft overflow-hidden">
+  <section
+    id="portfolio"
+    ref="sectionRef"
+    class="relative min-h-screen bg-gradient-soft overflow-hidden touch-pan-y"
+  >
     <!-- Background decoration -->
     <div
       class="absolute top-20 left-0 w-[28rem] h-[28rem] bg-sage-200 rounded-full blur-3xl opacity-30 animate-float"
