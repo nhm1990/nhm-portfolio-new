@@ -2,8 +2,8 @@
 title: Professional Experience
 subtitle: Extract of recent projects
 projects:
-  - id: basf-2025-q4
-    company: BASF
+  - id: chem-2025-q4
+    company: Chemical Corporation
     role: Senior Frontend Developer | UI/UX Designer
     industry: Chemical
     period: 09/2025 - 12/2025
@@ -48,8 +48,8 @@ projects:
       - Led successful migration of legacy components to modern React patterns
       - Established coding standards and best practices adopted company-wide
 
-  - id: basf-2025-q1
-    company: BASF
+  - id: chem-2025-q1
+    company: Chemical Corporation
     role: Senior Frontend Developer
     industry: Chemical
     period: 02/2025 - 07/2025
@@ -71,8 +71,8 @@ projects:
       - Integrated AI capabilities seamlessly into user workflows
       - Delivered scalable foundation for future laboratory workflow integrations
 
-  - id: allianz-2023
-    company: Allianz
+  - id: ins-2023
+    company: Insurance Corporation
     role: Senior Frontend Developer | UI/UX Designer
     industry: Insurance
     period: 07/2023 - 02/2025
@@ -99,8 +99,8 @@ projects:
       - Reduced SAS dependency significantly improving maintainability
       - Delivered compliant solution meeting BaFin regulatory requirements
 
-  - id: basf-2023-2024
-    company: BASF
+  - id: chem-2023-2024
+    company: Chemical Corporation
     role: Senior Frontend Developer | UI/UX Designer
     industry: Chemical
     period: 05/2023 - 10/2024
@@ -154,8 +154,8 @@ projects:
       - Enabled powerful facet-based filtering and full-text search capabilities
       - Delivered knowledge-graph-based architecture handling diverse data domains
 
-  - id: basf-2021-2022
-    company: BASF
+  - id: chem-2021-2022
+    company: Chemical Corporation
     role: Senior Frontend Developer | UI/UX
     industry: Chemical
     period: 10/2021 - 09/2022
