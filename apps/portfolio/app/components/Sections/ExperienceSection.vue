@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useContentData } from '~/composables/useSectionData'
+import { useContent } from '~/composables/useContent'
 import type { TimelineEvent, ExperienceProject } from '~/types/experience'
 
-const { data: rawData } = await useContentData('/experience')
+const { data: rawData } = await useContent('/experience')
 
 const experienceData = computed(() => rawData.value?.meta || null)
 const experienceTitle = computed(() => rawData.value?.title ?? 'Professional Experience')

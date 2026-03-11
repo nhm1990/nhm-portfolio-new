@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import { useContentData } from '~/composables/useSectionData'
+import { useContent } from '~/composables/useContent'
 import type { Skill, SkillsContent } from '~/models/skills'
 
-const { data: rawData } = await useContentData('/skills')
+const { data: rawData } = await useContent('/skills')
 
 const skillsData = computed(() => rawData.value?.meta as unknown as SkillsContent | null)
 const skillsTitle = computed(() => rawData.value?.title ?? 'Skills & Expertise')
