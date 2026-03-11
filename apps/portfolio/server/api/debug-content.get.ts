@@ -1,24 +1,29 @@
-import { queryCollection } from '#content/server'
-
 /**
  * Diagnostic endpoint to verify content is accessible on the server.
  * Visit /api/debug-content to check.
  * DELETE THIS FILE after debugging.
  */
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   try {
-    const enResult = await queryCollection('content_en').path('/portfolio').first()
-    const deResult = await queryCollection('content_de').path('/portfolio').first()
+    // Use $fetch to call Nuxt Content's built-in API
+    const enPortfolio = await $fetch('/api/_content/query/content_en', {
+      method: 'GET',
+      params: { path: '/portfolio' },
+    }).catch(() => null)
 
-    const enSkills = await queryCollection('content_en').path('/skills').first()
-    const deSkills = await queryCollection('content_de').path('/skills').first()
+    const dePortfolio = await $fetch('/api/_content/query/content_de', {
+      method: 'GET',
+      params: { path: '/portfolio' },
+    }).catch(() => null)
 
     return {
       status: 'ok',
-      content_en_portfolio: enResult ? { hasData: true, hasMeta: !!enResult.meta, metaKeys: Object.keys(enResult.meta ?? {}) } : null,
-      content_de_portfolio: deResult ? { hasData: true, hasMeta: !!deResult.meta, metaKeys: Object.keys(deResult.meta ?? {}) } : null,
-      content_en_skills: enSkills ? { hasData: true, title: enSkills.title } : null,
-      content_de_skills: deSkills ? { hasData: true, title: deSkills.title } : null,
+      content_en_portfolio: enPortfolio
+        ? { hasData: true, type: typeof enPortfolio, isArray: Array.isArray(enPortfolio) }
+        : null,
+      content_de_portfolio: dePortfolio
+        ? { hasData: true, type: typeof dePortfolio, isArray: Array.isArray(dePortfolio) }
+        : null,
     }
   }
   catch (error: unknown) {
