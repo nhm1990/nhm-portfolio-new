@@ -16,7 +16,27 @@
 		"description": "Software-Entwickler mit Leidenschaft für moderne, skalierbare Webanwendungen.",
 		"quickLinks": "Schnellzugriff",
 		"connect": "Vernetzen",
-		"rights": "Alle Rechte vorbehalten"
+		"rights": "Alle Rechte vorbehalten",
+		"impressum": "Impressum"
+	},
+	"impressum": {
+		"pageTitle": "Impressum – Nicolas Hormesch",
+		"title": "Impressum",
+		"infoTitle": "Angaben gemäß § 5 DDG",
+		"country": "Deutschland",
+		"contactTitle": "Kontakt",
+		"email": "E-Mail",
+		"responsibleTitle": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+		"disclaimerTitle": "Haftungsausschluss",
+		"liabilityContentTitle": "Haftung für Inhalte",
+		"liabilityContentText": "Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen. Als Diensteanbieter bin ich gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.",
+		"liabilityLinksTitle": "Haftung für Links",
+		"liabilityLinksText": "Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+		"copyrightTitle": "Urheberrecht",
+		"copyrightText": "Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
+		"hostingTitle": "Hosting",
+		"hostingText": "Diese Website wird gehostet bei:",
+		"backHome": "Zurück zur Startseite"
 	},
 	"contact": {
 		"form": {

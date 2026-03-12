@@ -16,7 +16,27 @@
 		"description": "Software Developer passionate about building modern, scalable web applications.",
 		"quickLinks": "Quick Links",
 		"connect": "Connect",
-		"rights": "All rights reserved"
+		"rights": "All rights reserved",
+		"impressum": "Legal Notice"
+	},
+	"impressum": {
+		"pageTitle": "Legal Notice – Nicolas Hormesch",
+		"title": "Legal Notice",
+		"infoTitle": "Information pursuant to § 5 DDG",
+		"country": "Germany",
+		"contactTitle": "Contact",
+		"email": "Email",
+		"responsibleTitle": "Responsible for content pursuant to § 18 (2) MStV",
+		"disclaimerTitle": "Disclaimer",
+		"liabilityContentTitle": "Liability for Content",
+		"liabilityContentText": "The contents of this website have been created with the utmost care. However, I cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, I am responsible for my own content on these pages in accordance with § 7 (1) DDG. According to §§ 8 to 10 DDG, however, I am not obligated to monitor transmitted or stored third-party information.",
+		"liabilityLinksTitle": "Liability for Links",
+		"liabilityLinksText": "This website contains links to external third-party websites over whose content I have no influence. Therefore, I cannot accept any liability for these external contents. The respective provider or operator of the linked pages is always responsible for their content.",
+		"copyrightTitle": "Copyright",
+		"copyrightText": "The content and works on these pages created by the site operator are subject to German copyright law. Reproduction, editing, distribution, and any use beyond the limits of copyright law require the written consent of the respective author or creator.",
+		"hostingTitle": "Hosting",
+		"hostingText": "This website is hosted by:",
+		"backHome": "Back to home"
 	},
 	"contact": {
 		"form": {

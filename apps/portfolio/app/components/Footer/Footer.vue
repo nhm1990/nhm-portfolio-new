@@ -37,6 +37,11 @@
                 t('nav.contact')
               }}</a>
             </li>
+            <li>
+              <NuxtLink to="/impressum" class="text-white/70 hover:text-white transition-colors">
+                {{ t('footer.impressum') }}
+              </NuxtLink>
+            </li>
           </ul>
         </div>
 
