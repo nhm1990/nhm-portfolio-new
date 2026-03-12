@@ -127,7 +127,7 @@ projects:
       - Bereitstellung einer skalierbaren Data Foundation zur Integration heterogener Datenquellen
 
   - id: bis-2021-2022
-    company: Internationale Bank (vertraulich)
+    company: Internationale Bank
     role: Senior Frontend Developer | UI/UX Designer
     industry: Finanzen
     period: 10/2021 - 09/2022

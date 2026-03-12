@@ -95,7 +95,7 @@ portfolio:
       category: "Data Visualization & Analytics"
       description: "Interactive environmental monitoring platform featuring real-time air quality data from 25+ global cities, advanced AG Charts visualizations, and a powerful AG Grid data explorer with inline editing, validation, and CSV export."
       image: "/images/portfolio/portfolio_ecoscope.webp"
-      link: "$ecoscope"
+      link: "https://ecoscope.hormesch.dev/"
       technologies:
         - "Vue 3"
         - "Nuxt"

@@ -95,7 +95,7 @@ portfolio:
       category: "Datenvisualisierung & Analytik"
       description: "Interaktive Umweltüberwachungsplattform mit Echtzeit-Luftqualitätsdaten aus 25+ globalen Städten, fortschrittlichen AG Charts Visualisierungen und einem leistungsstarken AG Grid Daten-Explorer mit Inline-Bearbeitung, Validierung und CSV-Export."
       image: "/images/portfolio/portfolio_ecoscope.webp"
-      link: "$ecoscope"
+      link: "https://ecoscope.hormesch.dev/"
       technologies:
         - "Vue 3"
         - "Nuxt"

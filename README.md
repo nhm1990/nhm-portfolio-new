@@ -132,7 +132,6 @@ Environment variables (create `apps/portfolio/.env`):
 
 ```env
 RESEND_API_KEY=re_...
-NUXT_PUBLIC_ECOSCOPE_URL=http://localhost:3001
 ```
 
 ---

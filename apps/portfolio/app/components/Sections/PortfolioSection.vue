@@ -3,8 +3,6 @@ import { ref, computed } from 'vue'
 import { useSwipe } from '@vueuse/core'
 
 const { data: content } = await useSectionData('portfolio')
-const config = useRuntimeConfig()
-
 const currentIndex = ref(0)
 const direction = ref<'none' | 'left' | 'right'>('none')
 const sectionRef = ref<HTMLElement | null>(null)
@@ -12,14 +10,7 @@ const sectionRef = ref<HTMLElement | null>(null)
 const projects = computed(() => content.value?.projects ?? [])
 const currentProject = computed(() => projects.value[currentIndex.value])
 const totalProjects = computed(() => projects.value.length)
-
-const resolvedLink = computed(() => {
-  const link = currentProject.value?.link
-  if (link === '$ecoscope') {
-    return config.public.ecoscopeUrl as string
-  }
-  return link
-})
+const link = computed(() => currentProject.value?.link ?? '')
 
 const goToPrev = () => {
   if (currentIndex.value > 0) {
@@ -87,11 +78,7 @@ useSwipe(sectionRef, {
           <div
             class="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sage-100/30"
           >
-            <PortfolioProjectInfo
-              :project="currentProject"
-              :direction="direction"
-              :link="resolvedLink"
-            />
+            <PortfolioProjectInfo :project="currentProject" :direction="direction" :link="link" />
           </div>
         </div>
       </div>
