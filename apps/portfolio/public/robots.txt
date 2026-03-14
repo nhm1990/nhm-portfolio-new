@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hormesch.dev/sitemap.xml

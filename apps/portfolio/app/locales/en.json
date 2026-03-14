@@ -38,6 +38,18 @@
 		"hostingText": "This website is hosted by:",
 		"backHome": "Back to home"
 	},
+	"skills": {
+		"fastLane": {
+			"badge": "Fast Lane",
+			"heading": "AI is accelerating the skill landscape —",
+			"headingHighlight": "we're not just on the highway, we're in the fast lane.",
+			"body": "Technology evolves at full throttle. Staying ahead means constantly adapting, learning new tools, and embracing AI not as a threat — but as the turbocharger that makes every developer exponentially more powerful."
+		},
+		"highway": {
+			"rightbound": "Rightbound",
+			"leftbound": "Leftbound"
+		}
+	},
 	"contact": {
 		"form": {
 			"name": "Name",

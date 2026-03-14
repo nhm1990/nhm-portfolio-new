@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Skill } from '~/models/skills'
 
+const { t } = useI18n({ useScope: 'global' })
+
 defineProps<{
   laneAFast: Skill[]
   laneASlow: Skill[]
@@ -28,9 +30,9 @@ defineProps<{
         <span class="w-1.5 h-1.5 rounded-full bg-mint-400/60" />
         <span class="w-1.5 h-1.5 rounded-full bg-mint-400/30" />
       </div>
-      <span class="text-[10px] font-bold tracking-widest text-mint-400/70 uppercase"
-        >Rightbound</span
-      >
+      <span class="text-[10px] font-bold tracking-widest text-mint-400/70 uppercase">{{
+        t('skills.highway.rightbound')
+      }}</span>
     </div>
 
     <!-- LANE A1 → slow (outer / right lane) -->
@@ -56,9 +58,9 @@ defineProps<{
 
     <!-- Direction label: left -->
     <div class="relative flex items-center gap-2 px-6 py-1 bg-charcoal-950/60 justify-end">
-      <span class="text-[10px] font-bold tracking-widest text-sage-400/70 uppercase"
-        >Leftbound</span
-      >
+      <span class="text-[10px] font-bold tracking-widest text-sage-400/70 uppercase">{{
+        t('skills.highway.leftbound')
+      }}</span>
       <div class="flex gap-1">
         <span class="w-1.5 h-1.5 rounded-full bg-sage-400/30" />
         <span class="w-1.5 h-1.5 rounded-full bg-sage-400/60" />

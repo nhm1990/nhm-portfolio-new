@@ -68,14 +68,27 @@ export default defineNuxtConfig({
     resendApiKey: process.env.RESEND_API_KEY,
   },
 
+  // Bundle MDI icons at build time so the server never fetches them at runtime.
+  // Without this, every SSR request triggers an HTTP fetch to Iconify's API,
+  // which times out after 1500ms and causes 300-second Vercel function runs.
+  icon: {
+    serverBundle: {
+      collections: ['mdi'],
+    },
+    clientBundle: {
+      scan: true,
+    },
+  },
+
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
 
-  // Prerender main pages so content is baked into static HTML at build time.
-  // The contact form API still runs as a serverless function.
+  // Only the two real pages exist — everything else is anchor-scrolled (#skills, #contact, etc.).
   routeRules: {
     '/': { prerender: true },
+    '/impressum': { prerender: true },
     '/de': { prerender: true },
+    '/de/impressum': { prerender: true },
   },
 
   nitro: {

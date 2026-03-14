@@ -38,6 +38,18 @@
 		"hostingText": "Diese Website wird gehostet bei:",
 		"backHome": "Zurück zur Startseite"
 	},
+	"skills": {
+		"fastLane": {
+			"badge": "Fast Lane",
+			"heading": "KI beschleunigt die Skill-Landschaft —",
+			"headingHighlight": "wir sind nicht nur auf der Autobahn, wir sind auf der Überholspur.",
+			"body": "Technologie entwickelt sich rasend schnell. Vorne zu bleiben bedeutet, sich ständig anzupassen, neue Tools zu erlernen und KI nicht als Bedrohung zu sehen — sondern als Turbolader, der jeden Entwickler exponentiell leistungsfähiger macht."
+		},
+		"highway": {
+			"rightbound": "Richtung rechts",
+			"leftbound": "Richtung links"
+		}
+	},
 	"contact": {
 		"form": {
 			"name": "Name",
