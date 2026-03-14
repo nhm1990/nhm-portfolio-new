@@ -1,12 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-  ],
+  modules: ['@nuxt/eslint', '@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/icon', '@nuxt/image'],
 
   fonts: {
     families: [{ name: 'Inter', provider: 'google' }],
@@ -29,6 +23,20 @@ export default defineNuxtConfig({
       // Set NUXT_PUBLIC_PORTFOLIO_URL in Vercel environment variables
       portfolioUrl: '',
     },
+  },
+
+  icon: {
+    serverBundle: {
+      collections: ['mdi'],
+    },
+    clientBundle: {
+      scan: true,
+    },
+  },
+
+  routeRules: {
+    '/': { prerender: true },
+    '/explorer': { prerender: true },
   },
 
   devtools: { enabled: true },
