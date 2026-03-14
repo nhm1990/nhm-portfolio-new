@@ -33,7 +33,7 @@ const scrollToSection = (id: string) => {
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth',
-    })
+    }) //scroll
   }
 }
 </script>
