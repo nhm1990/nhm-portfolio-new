@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
     const { error } = await resend.emails.send({
       from: 'Portfolio Contact <kontakt@hormesch.dev>',
-      to: ['nicolas.hormesch@icloud.com'],
+      to: ['nhormesch@posteo.de'],
       replyTo: email,
       subject: `[Portfolio] ${subject}`,
       html: `
