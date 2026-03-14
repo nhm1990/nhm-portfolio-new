@@ -113,10 +113,11 @@ const scrollToSection = (id: string) => {
             <!-- Image container with gradient border -->
             <div class="relative p-1 bg-gradient-primary rounded-full shadow-2xl">
               <div class="bg-white p-2 rounded-full">
-                <img
-                  src="/images/profile..webp"
+                <NuxtImg
+                  src="/images/profile.webp"
                   alt="Nicolas Hormesch"
                   class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover"
+                  format="webp"
                 />
               </div>
             </div>
