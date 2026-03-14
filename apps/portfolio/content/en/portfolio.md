@@ -15,7 +15,7 @@ clients:
       logo: "/images/customerlogo/siemens-logo.webp"
       url: "https://www.siemens.com"
     - name: "Chemical Group"
-      logo: "/images/customerlogo/basf-logo-png.png"
+      logo: "/images/customerlogo/basf-logo-png.webp"
       url: "https://www.basf.com"
     - name: "DHL"
       logo: "/images/customerlogo/dhl-logo.webp"

@@ -35,7 +35,11 @@ defineProps<Props>()
         <div
           class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mb-3 group-hover:shadow-lg group-hover:shadow-mint-500/30 transition-shadow p-2"
         >
-          <NuxtImg src="/images/linkedin.png" alt="LinkedIn" class="w-full h-full object-contain" />
+          <NuxtImg
+            src="/images/linkedin.webp"
+            alt="LinkedIn"
+            class="w-full h-full object-contain"
+          />
         </div>
         <p class="text-sm text-sage-500">LinkedIn</p>
         <p class="font-semibold text-charcoal-900 group-hover:text-mint-600 transition-colors">
@@ -52,7 +56,7 @@ defineProps<Props>()
         <div
           class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mb-3 group-hover:shadow-lg group-hover:shadow-mint-500/30 transition-shadow p-2"
         >
-          <NuxtImg src="/images/github.png" alt="GitHub" class="w-full h-full object-contain" />
+          <NuxtImg src="/images/github.webp" alt="GitHub" class="w-full h-full object-contain" />
         </div>
         <p class="text-sm text-sage-500">GitHub</p>
         <p class="font-semibold text-charcoal-900 group-hover:text-mint-600 transition-colors">

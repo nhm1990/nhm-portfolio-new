@@ -15,7 +15,7 @@ clients:
       logo: "/images/customerlogo/siemens-logo.webp"
       url: "https://www.siemens.com"
     - name: "Chemiekonzern"
-      logo: "/images/customerlogo/basf-logo-png.png"
+      logo: "/images/customerlogo/basf-logo-png.webp"
       url: "https://www.basf.com"
     - name: "DHL"
       logo: "/images/customerlogo/dhl-logo.webp"
@@ -51,7 +51,7 @@ portfolio:
       client: "DHL"
       category: "Mobile & Frontend"
       description: "B2B-Logistik-App, die Fahrern ermöglicht, Sendungen unterwegs zu verwalten. Mit GPS-Tracking, zentraler Hub-Koordination und intelligenter Routenoptimierung können Fahrer LKWs mid-route tauschen und täglich nach Hause zurückkehren."
-      image: "/images/portfolio/portfolio_dhl.png"
+      image: "/images/portfolio/portfolio_dhl.webp"
       link: "https://play.google.com/store/apps/details?id=com.dhl.dsc.drivefordhl&hl=de"
       technologies:
         - "Kotlin"

@@ -61,7 +61,7 @@
               class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors p-2"
             >
               <NuxtImg
-                src="/images/linkedin.png"
+                src="/images/linkedin.webp"
                 alt="LinkedIn"
                 class="w-full h-full object-contain"
               />
@@ -72,7 +72,11 @@
               rel="noopener noreferrer"
               class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors p-2"
             >
-              <NuxtImg src="/images/github.png" alt="GitHub" class="w-full h-full object-contain" />
+              <NuxtImg
+                src="/images/github.webp"
+                alt="GitHub"
+                class="w-full h-full object-contain"
+              />
             </a>
           </div>
         </div>
