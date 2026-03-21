@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+Disallow: /wordpress/
+
+# Block aggressive AI crawlers
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
 
 Sitemap: https://hormesch.dev/sitemap.xml
