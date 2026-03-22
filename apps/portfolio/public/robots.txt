@@ -4,9 +4,13 @@ Disallow: /wp-admin/
 Disallow: /wp-login.php
 Disallow: /xmlrpc.php
 Disallow: /wordpress/
+Disallow: /admin
 
 # Block aggressive AI crawlers
 User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-SearchBot
 Disallow: /
 
 User-agent: GPTBot
@@ -15,4 +19,8 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
-Sitemap: https://hormesch.dev/sitemap.xml
+User-agent: Bytespider
+Disallow: /
+
+User-agent: AmazonBot
+Disallow: /
