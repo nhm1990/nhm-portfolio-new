@@ -55,6 +55,7 @@ export default defineEventHandler((event) => {
     '/ads.txt',
     '/app-ads.txt',
     '/sitemap.xml',
+    '/api',
   ]
 
   // Block if path starts with a blocked prefix
