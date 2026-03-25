@@ -1,18 +1,16 @@
 /**
- * Server middleware to block WordPress vulnerability scanners, malicious bots,
- * and aggressive AI crawlers.
+ * Server middleware using an ALLOWLIST approach to protect against scanners,
+ * bots, and any unknown paths hitting the Nuxt SSR fallback function.
  *
- * These automated requests hit the Nuxt SSR fallback function and cause
- * 15-second timeouts, wasting serverless function invocations and CPU.
- *
- * Returns an immediate 404 for known attack paths and blocks known
- * AI crawler user-agents before they reach the SSR pipeline.
+ * Instead of maintaining an ever-growing blocklist, this middleware only
+ * allows requests to known legitimate routes. Everything else gets an
+ * immediate 404 — no SSR rendering, no 15-second timeouts, no wasted CPU.
  */
 export default defineEventHandler((event) => {
   const path = getRequestURL(event).pathname.toLowerCase()
   const userAgent = (getRequestHeader(event, 'user-agent') ?? '').toLowerCase()
 
-  // Block aggressive AI crawlers by user-agent
+  // Block aggressive AI crawlers by user-agent (regardless of path)
   const blockedUserAgents = [
     'claudebot',
     'claude-searchbot',
@@ -30,44 +28,32 @@ export default defineEventHandler((event) => {
     return 'Forbidden'
   }
 
-  // WordPress scanner paths and common attack vectors
-  const blockedPrefixes = [
-    '/wp-',
-    '/wordpress/',
-    '/wp/',
-    '/xmlrpc',
-    '/.env',
-    '/admin',
-    '/phpmyadmin',
-    '/cgi-bin/',
-    '/.git',
-    '/.well-known/security.txt',
+  // --- Allowlist: only these paths/prefixes may reach Nuxt SSR ---
+
+  // Exact valid page routes
+  const allowedExact = [
+    '/',
+    '/de',
+    '/impressum',
+    '/de/impressum',
+    '/debug',
+    '/de/debug',
+    '/favicon.ico',
+    '/robots.txt',
   ]
 
-  const blockedExact = [
-    '/xmlrpc.php',
-    '/wp-login.php',
-    '/wp-cron.php',
-    '/wp-config.php',
-    '/readme.html',
-    '/license.txt',
-    '/sellers.json',
-    '/ads.txt',
-    '/app-ads.txt',
-    '/sitemap.xml',
-    '/api',
+  // Valid path prefixes (internal assets, APIs, static files)
+  const allowedPrefixes = [
+    '/_nuxt/', // Vite-built client assets
+    '/__nuxt_image/', // @nuxt/image optimization
+    '/api/', // Server API routes (contact, debug-content, _content)
+    '/images/', // Static images from public/
   ]
 
-  // Block if path starts with a blocked prefix
-  const isBlockedPrefix = blockedPrefixes.some((prefix) => path.startsWith(prefix))
+  const isAllowedExact = allowedExact.includes(path)
+  const isAllowedPrefix = allowedPrefixes.some((prefix) => path.startsWith(prefix))
 
-  // Block if path matches exactly
-  const isBlockedExact = blockedExact.includes(path)
-
-  // Block common PHP file requests (no PHP on this site)
-  const isPhpRequest = path.endsWith('.php')
-
-  if (isBlockedPrefix || isBlockedExact || isPhpRequest) {
+  if (!isAllowedExact && !isAllowedPrefix) {
     setResponseStatus(event, 404)
     setResponseHeader(event, 'Content-Type', 'text/plain')
     return 'Not Found'
