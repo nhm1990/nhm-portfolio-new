@@ -31,16 +31,7 @@ export default defineEventHandler((event) => {
   // --- Allowlist: only these paths/prefixes may reach Nuxt SSR ---
 
   // Exact valid page routes
-  const allowedExact = [
-    '/',
-    '/de',
-    '/impressum',
-    '/de/impressum',
-    '/debug',
-    '/de/debug',
-    '/favicon.ico',
-    '/robots.txt',
-  ]
+  const allowedExact = ['/', '/de', '/impressum', '/de/impressum', '/favicon.ico', '/robots.txt']
 
   // Valid path prefixes (internal assets, APIs, static files)
   const allowedPrefixes = [
