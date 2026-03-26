@@ -37,6 +37,7 @@ export default defineEventHandler((event) => {
   const allowedPrefixes = [
     '/_nuxt/', // Vite-built client assets
     '/__nuxt_image/', // @nuxt/image optimization
+    '/__nuxt_content/', // @nuxt/content internal query API (used during prerender)
     '/api/', // Server API routes (contact, debug-content, _content)
     '/images/', // Static images from public/
   ]
