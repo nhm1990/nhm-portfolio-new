@@ -93,5 +93,12 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'vercel',
+    prerender: {
+      // /_ipx and /_i18n are dynamic server routes that only work at runtime on
+      // Vercel — the prerender crawler discovers them via links but they cannot
+      // be statically generated.  _payload.json is likewise runtime-only.
+      ignore: ['/_ipx', '/_i18n'],
+      failOnError: false,
+    },
   },
 })
