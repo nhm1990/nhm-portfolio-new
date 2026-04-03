@@ -79,6 +79,10 @@ export default defineNuxtConfig({
     },
   },
 
+  experimental: {
+    payloadExtraction: false,
+  },
+
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
 
@@ -91,7 +95,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel',
+    preset: 'vercel-static',
     prerender: {
       // /_ipx and /_i18n are dynamic server routes that only work at runtime on
       // Vercel — the prerender crawler discovers them via links but they cannot

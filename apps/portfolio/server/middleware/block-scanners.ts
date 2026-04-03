@@ -36,9 +36,10 @@ export default defineEventHandler((event) => {
   // Valid path prefixes (internal assets, APIs, static files)
   const allowedPrefixes = [
     '/_nuxt/', // Vite-built client assets
+    '/_i18n/', // @nuxtjs/i18n locale message bundles (SWR-cached at CDN)
     '/__nuxt_image/', // @nuxt/image optimization
     '/__nuxt_content/', // @nuxt/content internal query API (used during prerender)
-    '/api/', // Server API routes (contact, debug-content, _content)
+    '/api/', // Server API routes (contact, _content)
     '/images/', // Static images from public/
   ]
 
